@@ -6,37 +6,36 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-/* BODY */
 body {
-  background: #0e0e0e;
+  background: #111;
   overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* NAV */
 .nav {
   position: absolute;
   top: 0;
   width: 100%;
-  padding: 20px 60px;
+  padding: 18px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #f5f1e8;
-  font-size: 14px;
+  color: #f2efe6;
+  font-size: 13px;
   z-index: 10;
 }
 
-.nav-links a {
-  margin-left: 30px;
-  color: #f5f1e8;
+.nav a {
+  margin-left: 28px;
+  color: #f2efe6;
   text-decoration: none;
+  opacity: 0.85;
 }
 
-/* HERO SECTION */
+/* HERO */
 .hero {
   display: flex;
   height: 100vh;
-  overflow: hidden;
 }
 
 /* LEFT RED BLOCK */
@@ -45,31 +44,35 @@ body {
   background: #b12b1c;
   padding: 120px 60px;
   display: flex;
-  align-items: center;
-  position: relative;
+  align-items: flex-end;
 }
 
-/* PORTFOLIO TEXT */
-.portfolio-text {
+/* TEXT */
+.title .small {
+  color: #f2efe6;
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.title .big {
   position: relative;
-  font-size: clamp(80px, 9vw, 150px);
+  font-size: 140px;
   font-weight: 900;
   line-height: 0.9;
-  color: #f5f1e8;
+  color: #f2efe6;
   white-space: nowrap;
 }
 
-/* FRONT TEXT */
-.front-text {
+.front {
   position: relative;
   z-index: 3;
 }
 
-/* BACK TEXT (LIO) */
-.back-text {
+.back {
   position: absolute;
-  top: -45px;
-  left: 270px;
+  left: 310px;
+  top: -35px;
   z-index: 1;
   opacity: 0.95;
 }
@@ -78,10 +81,10 @@ body {
 .hero-right {
   width: 50%;
   position: relative;
-  background: #000;
+  overflow: hidden;
 }
 
-.hero-img {
+.hero-right img {
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -103,12 +106,12 @@ body {
     height: 50vh;
   }
 
-  .hero-left {
-    padding: 80px 30px;
+  .title .big {
+    font-size: 90px;
   }
 
-  .back-text {
+  .back {
     left: 200px;
-    top: -30px;
+    top: -25px;
   }
 }
