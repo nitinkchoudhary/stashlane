@@ -5,43 +5,130 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>My Portfolio</title>
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #fff;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      z-index: 10;
+    }
+
+    .navbar span {
+      opacity: 0.7;
+    }
+
+    .nav-links a {
+      margin-left: 30px;
+      text-decoration: none;
+      color: #fff;
+      opacity: 0.7;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+    }
+
+    /* LEFT SIDE */
+    .hero-left {
+      width: 50%;
+      background: #b0281a;
+      padding: 120px 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-left h1 {
+      font-size: clamp(60px, 8vw, 120px);
+      font-weight: 900;
+      line-height: 0.95;
+    }
+
+    /* RIGHT SIDE */
+    .hero-right {
+      width: 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero-left,
+      .hero-right {
+        width: 100%;
+      }
+
+      .hero-left {
+        padding: 100px 30px;
+      }
+
+      .navbar {
+        padding: 20px 30px;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAVBAR -->
-  <header class="nav">
+  <div class="navbar">
     <span>2026</span>
-    <nav>
+    <div class="nav-links">
       <a href="#">artist</a>
       <a href="#">portfolio</a>
       <a href="#">work</a>
-    </nav>
-  </header>
+    </div>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
-
-    <!-- LEFT -->
     <div class="hero-left">
-      <div class="title">
-        <div class="small">CREATIVE</div>
-
-        <div class="big">
-          <span class="front">PORTFO</span>
-          <span class="back">LIO</span>
-        </div>
-      </div>
+      <h1>MY<br>PORTFOLIO</h1>
     </div>
 
-    <!-- RIGHT -->
     <div class="hero-right">
-      <img src="your-photo.jpg" alt="portrait">
+      <!-- Replace image name -->
+      <img src="your-photo.jpg" alt="My Photo">
     </div>
+  </section>
 
+  <!-- NEXT SECTION (for scroll) -->
+  <section style="padding:100px 60px; background:#111;">
+    <h2 style="font-size:40px;">About Me</h2>
+    <p style="margin-top:20px; max-width:600px; opacity:0.7;">
+      Add your content here. This section appears when you scroll down.
+    </p>
   </section>
 
 </body>
