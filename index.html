@@ -1,124 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
 
   <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      background: #0e0e0e;
-    }
-
-    /* NAVBAR */
-    .nav {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      color: #f3efe6;
-      font-size: 14px;
-      z-index: 10;
-      opacity: 0.8;
-    }
-
-    .nav div a {
-      margin-left: 30px;
-      text-decoration: none;
-      color: #f3efe6;
-    }
-
-    /* HERO */
-    .hero {
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    /* LEFT RED BLOCK */
-    .hero-left {
-      width: 50%;
-      background: #b12b1c;
-      padding: 120px 60px;
-      position: relative;
-    }
-
-    .portfolio-text {
-      position: relative;
-      font-size: clamp(80px, 9vw, 150px);
-      font-weight: 900;
-      line-height: 0.9;
-      color: #f5f1e8;
-    }
-
-    .front-text {
-      position: relative;
-      z-index: 3;
-      display: inline-block;
-    }
-
-    .back-text {
-      position: absolute;
-      top: -45px;        /* moves LIO upward */
-      left: 270px;       /* controls spacing after PORTFO */
-      z-index: 1;
-      opacity: 0.95;
-    }
-
-    /* RIGHT IMAGE */
-    .hero-right {
-      width: 50%;
-      position: relative;
-      background: #000;
-    }
-
-    .hero-img {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      z-index: 2;        /* between texts */
-      object-fit: cover;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-      }
-
-      .hero-left,
-      .hero-right {
-        width: 100%;
-        height: 50vh;
-      }
-
-      .back-text {
-        left: 200px;
-        top: -30px;
-      }
-    }
-  </style>
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- NAVBAR -->
   <div class="nav">
     <span>2026</span>
-    <div>
+    <div class="nav-links">
       <a href="#">artist</a>
       <a href="#">portfolio</a>
       <a href="#">work</a>
@@ -128,7 +26,7 @@
   <!-- HERO -->
   <section class="hero">
 
-    <!-- LEFT -->
+    <!-- LEFT SIDE -->
     <div class="hero-left">
       <div class="portfolio-text">
         <span class="front-text">PORTFO</span>
@@ -136,9 +34,8 @@
       </div>
     </div>
 
-    <!-- RIGHT -->
+    <!-- RIGHT SIDE -->
     <div class="hero-right">
-      <!-- IMPORTANT: image name must match exactly -->
       <img src="your-photo.jpg" alt="My Photo" class="hero-img">
     </div>
 
