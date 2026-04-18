@@ -1,135 +1,581 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    body {
-      background: #0d0d0d;
-      color: #fff;
-    }
-
-    /* NAVBAR */
-    .navbar {
-      position: absolute;
-      top: 0;
-      width: 100%;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      z-index: 10;
-    }
-
-    .navbar span {
-      opacity: 0.7;
-    }
-
-    .nav-links a {
-      margin-left: 30px;
-      text-decoration: none;
-      color: #fff;
-      opacity: 0.7;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-    }
-
-    /* LEFT SIDE */
-    .hero-left {
-      width: 50%;
-      background: #b0281a;
-      padding: 120px 60px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-left h1 {
-      font-size: clamp(60px, 8vw, 120px);
-      font-weight: 900;
-      line-height: 0.95;
-    }
-
-    /* RIGHT SIDE */
-    .hero-right {
-      width: 50%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero {
-        flex-direction: column;
-      }
-
-      .hero-left,
-      .hero-right {
-        width: 100%;
-      }
-
-      .hero-left {
-        padding: 100px 30px;
-      }
-
-      .navbar {
-        padding: 20px 30px;
-      }
-    }
-  </style>
+  <title>Nitin Kumar Choudhary — Video Editor & Graphic Designer</title>
+  <meta name="description" content="Nitin Kumar Choudhary — Video Editor & Graphic Designer crafting visuals that make people stop scrolling."/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <span>2026</span>
-    <div class="nav-links">
-      <a href="#">artist</a>
-      <a href="#">portfolio</a>
-      <a href="#">work</a>
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <span class="loader-name">NKC</span>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <h1>MY<br>PORTFOLIO</h1>
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <a class="nav-logo" href="#">NKC<span class="accent">.</span></a>
+    <div class="nav-links">
+      <a href="#reel" class="nav-link">Work</a>
+      <a href="#graphics" class="nav-link">Design</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Hire Me</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#reel" class="mobile-link">Work</a>
+    <a href="#graphics" class="mobile-link">Design</a>
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+  </div>
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-noise"></div>
+    <div class="hero-grid-overlay"></div>
+
+    <!-- floating pill tags -->
+    <div class="hero-pill pill-1">Video Editing</div>
+    <div class="hero-pill pill-2">Motion Graphics</div>
+    <div class="hero-pill pill-3">Brand Design</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal-up" style="--delay:0.1s">Based in Greater Noida, India</p>
+      <h1 class="hero-title">
+        <span class="line reveal-up" style="--delay:0.2s">I create visuals</span>
+        <span class="line reveal-up italic-line" style="--delay:0.35s">that make people</span>
+        <span class="line reveal-up" style="--delay:0.5s">stop <span class="word-stroke">scrolling<span class="word-fill">scrolling</span></span><span class="accent">.</span></span>
+      </h1>
+      <p class="hero-sub reveal-up" style="--delay:0.65s">
+        Video editor &amp; graphic designer crafting cinematic edits,<br class="d-only"/>
+        bold identities, and scroll-stopping content for brands.
+      </p>
+      <div class="hero-ctas reveal-up" style="--delay:0.8s">
+        <a href="#reel" class="btn-primary">
+          <span>View My Work</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-ghost">Let's Talk</a>
+      </div>
     </div>
 
-    <div class="hero-right">
-      <!-- Replace image name -->
-      <img src="your-photo.jpg" alt="My Photo">
+    <div class="hero-right reveal-up" style="--delay:0.4s">
+      <div class="hero-photo-wrap">
+        <img src="your-photo.jpg" alt="Nitin Kumar Choudhary" class="hero-photo"/>
+        <div class="hero-photo-glow"></div>
+      </div>
+      <div class="hero-stat-card stat-1">
+        <strong>50+</strong>
+        <span>Projects Delivered</span>
+      </div>
+      <div class="hero-stat-card stat-2">
+        <strong>3+</strong>
+        <span>Years Experience</span>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint">
+      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+      <span>Scroll</span>
     </div>
   </section>
 
-  <!-- NEXT SECTION (for scroll) -->
-  <section style="padding:100px 60px; background:#111;">
-    <h2 style="font-size:40px;">About Me</h2>
-    <p style="margin-top:20px; max-width:600px; opacity:0.7;">
-      Add your content here. This section appears when you scroll down.
-    </p>
+  <!-- ══════════════════════════ VIDEO REEL ══════════════════════════ -->
+  <section class="section reel-section" id="reel">
+    <div class="section-label reveal-up">Selected Work</div>
+    <div class="reel-header">
+      <h2 class="section-title reveal-up">
+        Video Editing<br/><em>Reel.</em>
+      </h2>
+      <p class="section-desc reveal-up">
+        From punchy 15-second social reels to full-length cinematic productions —<br class="d-only"/>
+        I edit with rhythm, intention, and a story in mind.
+      </p>
+    </div>
+
+    <!-- MAIN VIDEO PLAYER -->
+    <div class="video-player-wrap reveal-up">
+      <div class="video-player">
+        <div class="video-placeholder" id="videoPlaceholder">
+          <div class="video-bg-gradient"></div>
+          <button class="play-btn-large" id="playBtn" aria-label="Play reel">
+            <div class="play-ripple"></div>
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="white"><polygon points="6,2 26,14 6,26"/></svg>
+          </button>
+          <div class="video-label">
+            <span class="video-duration">03:42</span>
+            <span class="video-title-tag">2024 Showreel</span>
+          </div>
+        </div>
+        <!-- Replace src with your actual YouTube embed -->
+        <iframe
+          id="videoIframe"
+          class="video-iframe hidden"
+          src=""
+          data-src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="Nitin Kumar Choudhary Showreel"
+        ></iframe>
+      </div>
+      <div class="video-caption">
+        <div class="video-caption-item">
+          <span class="caption-icon">⬡</span>
+          <span>Cinematic edits</span>
+        </div>
+        <div class="video-caption-item">
+          <span class="caption-icon">⬡</span>
+          <span>Social media reels</span>
+        </div>
+        <div class="video-caption-item">
+          <span class="caption-icon">⬡</span>
+          <span>Brand &amp; ad films</span>
+        </div>
+        <div class="video-caption-item">
+          <span class="caption-icon">⬡</span>
+          <span>Motion graphics</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REEL CARDS GRID -->
+    <div class="reel-grid">
+      <div class="reel-card reveal-up" style="--delay:0s">
+        <div class="reel-thumb r1"></div>
+        <div class="reel-overlay">
+          <div class="reel-play-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><polygon points="3,2 15,8 3,14"/></svg>
+          </div>
+          <div class="reel-card-meta">
+            <span class="reel-tag">Brand Film</span>
+            <p>Product Launch — 60s Hero Cut</p>
+          </div>
+        </div>
+      </div>
+      <div class="reel-card reveal-up" style="--delay:0.1s">
+        <div class="reel-thumb r2"></div>
+        <div class="reel-overlay">
+          <div class="reel-play-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><polygon points="3,2 15,8 3,14"/></svg>
+          </div>
+          <div class="reel-card-meta">
+            <span class="reel-tag">Social Media</span>
+            <p>Instagram Reels Package</p>
+          </div>
+        </div>
+      </div>
+      <div class="reel-card reveal-up" style="--delay:0.2s">
+        <div class="reel-thumb r3"></div>
+        <div class="reel-overlay">
+          <div class="reel-play-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><polygon points="3,2 15,8 3,14"/></svg>
+          </div>
+          <div class="reel-card-meta">
+            <span class="reel-tag">Cinematic</span>
+            <p>Wedding Highlight Film</p>
+          </div>
+        </div>
+      </div>
+      <div class="reel-card reveal-up" style="--delay:0.3s">
+        <div class="reel-thumb r4"></div>
+        <div class="reel-overlay">
+          <div class="reel-play-sm">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="white"><polygon points="3,2 15,8 3,14"/></svg>
+          </div>
+          <div class="reel-card-meta">
+            <span class="reel-tag">Motion</span>
+            <p>Animated Explainer</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
+  <!-- ═══════════════════════ GRAPHICS SHOWCASE ═══════════════════════ -->
+  <section class="section graphics-section" id="graphics">
+    <div class="section-label reveal-up">Design Work</div>
+    <div class="graphics-header">
+      <h2 class="section-title reveal-up">
+        Graphics &amp;<br/><em>Visual Design.</em>
+      </h2>
+      <p class="section-desc reveal-up">
+        Logos, social kits, posters, and brand identities —<br class="d-only"/>
+        built around clarity, impact, and lasting impression.
+      </p>
+      <div class="cat-filters reveal-up">
+        <button class="cat-btn active" data-cat="all">All</button>
+        <button class="cat-btn" data-cat="branding">Branding</button>
+        <button class="cat-btn" data-cat="social">Social</button>
+        <button class="cat-btn" data-cat="print">Print</button>
+      </div>
+    </div>
+
+    <div class="graphics-grid">
+      <div class="g-card reveal-up" data-cat="branding" style="--delay:0s">
+        <div class="g-thumb gb1"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">Brand Identity Kit</p>
+          <span class="g-hover-cat">Logo · Typography · Colors</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Brand Identity</span>
+          <span class="g-type">Branding</span>
+        </div>
+      </div>
+      <div class="g-card reveal-up" data-cat="social" style="--delay:0.08s">
+        <div class="g-thumb gb2"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">Social Media Pack</p>
+          <span class="g-hover-cat">Instagram · Stories · Reels</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Social Kit</span>
+          <span class="g-type">Social</span>
+        </div>
+      </div>
+      <div class="g-card g-card--tall reveal-up" data-cat="print" style="--delay:0.16s">
+        <div class="g-thumb gb3"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">Event Poster Series</p>
+          <span class="g-hover-cat">Print · Digital</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Poster Design</span>
+          <span class="g-type">Print</span>
+        </div>
+      </div>
+      <div class="g-card reveal-up" data-cat="branding" style="--delay:0.24s">
+        <div class="g-thumb gb4"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">Logo Design</p>
+          <span class="g-hover-cat">Wordmark · Icon</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Logo System</span>
+          <span class="g-type">Branding</span>
+        </div>
+      </div>
+      <div class="g-card reveal-up" data-cat="social" style="--delay:0.32s">
+        <div class="g-thumb gb5"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">YouTube Thumbnails</p>
+          <span class="g-hover-cat">High CTR Design</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Thumbnails</span>
+          <span class="g-type">Social</span>
+        </div>
+      </div>
+      <div class="g-card reveal-up" data-cat="branding" style="--delay:0.4s">
+        <div class="g-thumb gb6"></div>
+        <div class="g-hover">
+          <p class="g-hover-title">Brand Guidelines</p>
+          <span class="g-hover-cat">Full Style System</span>
+          <span class="g-hover-arrow">↗</span>
+        </div>
+        <div class="g-footer">
+          <span class="g-name">Brand Manual</span>
+          <span class="g-type">Branding</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ ABOUT ════════════════════════════ -->
+  <section class="section about-section" id="about">
+    <div class="about-grid">
+      <div class="about-left reveal-up">
+        <div class="about-photo-wrap">
+          <img src="your-photo.jpg" alt="Nitin Kumar Choudhary" class="about-photo"/>
+          <div class="about-photo-border"></div>
+          <div class="about-years-badge">
+            <strong>3+</strong>
+            <span>Years</span>
+          </div>
+        </div>
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>50+</strong>
+            <span>Projects</span>
+          </div>
+          <div class="about-stat">
+            <strong>30+</strong>
+            <span>Clients</span>
+          </div>
+          <div class="about-stat">
+            <strong>100%</strong>
+            <span>Dedication</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-right reveal-up" style="--delay:0.15s">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">
+          The person<br/><em>behind the lens.</em>
+        </h2>
+        <p class="about-bio">
+          Hey — I'm <strong>Nitin Kumar Choudhary</strong>, a video editor and graphic designer based in Greater Noida, India. I believe great visuals aren't just pretty — they're strategic. They stop thumbs, build trust, and move people.
+        </p>
+        <p class="about-bio">
+          I work with creators, startups, and brands who want content that actually <em>says something</em>. From a punchy 15-second Instagram reel to a full cinematic brand film — I bring precision, rhythm, and storytelling to every project.
+        </p>
+        <div class="tools-section">
+          <p class="tools-label">Tools I work with</p>
+          <div class="tools-grid">
+            <div class="tool-chip">
+              <span class="tool-dot"></span>Premiere Pro
+            </div>
+            <div class="tool-chip">
+              <span class="tool-dot"></span>After Effects
+            </div>
+            <div class="tool-chip">
+              <span class="tool-dot"></span>DaVinci Resolve
+            </div>
+            <div class="tool-chip">
+              <span class="tool-dot"></span>Photoshop
+            </div>
+            <div class="tool-chip">
+              <span class="tool-dot"></span>Illustrator
+            </div>
+            <div class="tool-chip">
+              <span class="tool-dot"></span>Figma
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-primary">Work With Me
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ CONTACT ════════════════════════════ -->
+  <section class="section contact-section" id="contact">
+    <div class="contact-bg-text">CONTACT</div>
+    <div class="contact-inner">
+      <div class="contact-left reveal-up">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">
+          Have a project<br/><em>in mind?</em>
+        </h2>
+        <p class="contact-subtext">
+          Open to freelance projects, brand collaborations, and long-term creative partnerships. Let's build something that stands out.
+        </p>
+        <div class="contact-info-list">
+          <a href="mailto:hello@stashlane.in" class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            </div>
+            <div>
+              <span class="info-label">Email</span>
+              <span class="info-value">hello@stashlane.in</span>
+            </div>
+          </a>
+          <a href="https://instagram.com/" target="_blank" class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <span class="info-label">Instagram</span>
+              <span class="info-value">@nitin.edits</span>
+            </div>
+          </a>
+          <a href="https://github.com/nitinkchoudhary" target="_blank" class="contact-info-row">
+            <div class="contact-info-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </div>
+            <div>
+              <span class="info-label">GitHub</span>
+              <span class="info-value">nitinkchoudhary</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-right reveal-up" style="--delay:0.2s">
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="fname">Your Name</label>
+              <input class="form-input" type="text" id="fname" name="name" placeholder="John Doe" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="femail">Email Address</label>
+              <input class="form-input" type="email" id="femail" name="email" placeholder="john@example.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fproject">Project Type</label>
+            <select class="form-input form-select" id="fproject" name="project">
+              <option value="">Select a service…</option>
+              <option>Video Editing</option>
+              <option>Graphic Design</option>
+              <option>Brand Identity</option>
+              <option>Social Media Content</option>
+              <option>Full Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="fmessage">Tell me about your project</label>
+            <textarea class="form-input form-textarea" id="fmessage" name="message" placeholder="What are you working on? Describe your goals, timeline, budget…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" id="submitBtn">
+            <span id="btnText">Send Message</span>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <p class="form-success hidden" id="formSuccess">✓ Message sent! I'll get back to you within 24 hours.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <span class="footer-logo">NKC<span class="accent">.</span></span>
+      <span class="footer-copy">© 2026 Nitin Kumar Choudhary. All rights reserved.</span>
+      <a href="#hero" class="footer-top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+  // ─── LOADER ───────────────────────────────────────────────
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    const fill = document.querySelector('.loader-fill');
+    fill.style.width = '100%';
+    setTimeout(() => {
+      loader.classList.add('loader--out');
+      setTimeout(() => loader.remove(), 600);
+    }, 1200);
+  });
+
+  // ─── CUSTOM CURSOR ────────────────────────────────────────
+  const cursor = document.getElementById('cursor');
+  const follower = document.getElementById('cursorFollower');
+  let mx = 0, my = 0, fx = 0, fy = 0;
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx}px,${my}px)`;
+  });
+  function followCursor() {
+    fx += (mx - fx) * 0.12;
+    fy += (my - fy) * 0.12;
+    follower.style.transform = `translate(${fx}px,${fy}px)`;
+    requestAnimationFrame(followCursor);
+  }
+  followCursor();
+  document.querySelectorAll('a,button,.reel-card,.g-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('cursor--hover'); follower.classList.add('cursor--hover'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('cursor--hover'); follower.classList.remove('cursor--hover'); });
+  });
+
+  // ─── NAVBAR ───────────────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('navbar--scrolled', window.scrollY > 60);
+  });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-link').forEach(l => {
+    l.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // ─── SMOOTH SCROLL ────────────────────────────────────────
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // ─── SCROLL REVEAL ────────────────────────────────────────
+  const revealEls = document.querySelectorAll('.reveal-up');
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObs.observe(el));
+
+  // ─── VIDEO PLAYER ─────────────────────────────────────────
+  document.getElementById('playBtn').addEventListener('click', () => {
+    const placeholder = document.getElementById('videoPlaceholder');
+    const iframe = document.getElementById('videoIframe');
+    iframe.src = iframe.dataset.src;
+    placeholder.classList.add('hidden');
+    iframe.classList.remove('hidden');
+  });
+
+  // ─── CATEGORY FILTER ──────────────────────────────────────
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.g-card').forEach(card => {
+        const match = cat === 'all' || card.dataset.cat === cat;
+        card.style.opacity = match ? '1' : '0.25';
+        card.style.pointerEvents = match ? 'auto' : 'none';
+      });
+    });
+  });
+
+  // ─── CONTACT FORM ─────────────────────────────────────────
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const text = document.getElementById('btnText');
+    const success = document.getElementById('formSuccess');
+    btn.disabled = true;
+    text.textContent = 'Sending…';
+    setTimeout(() => {
+      btn.classList.add('hidden');
+      success.classList.remove('hidden');
+      e.target.reset();
+    }, 1400);
+  });
+
+  // ─── HERO PARALLAX PILLS ──────────────────────────────────
+  document.addEventListener('mousemove', e => {
+    const cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+    const dx = (e.clientX - cx) / cx, dy = (e.clientY - cy) / cy;
+    document.querySelectorAll('.hero-pill').forEach((pill, i) => {
+      const depth = (i + 1) * 6;
+      pill.style.transform = `translate(${dx * depth}px, ${dy * depth}px)`;
+    });
+  });
+  </script>
 </body>
 </html>
