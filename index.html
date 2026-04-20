@@ -188,6 +188,7 @@ input,select,textarea{font-family:inherit}
 .fsel option{background:var(--bg2)}
 .ftx{min-height:120px;resize:vertical;line-height:1.7}
 .fok{font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;color:#4caf7d;padding:.75rem 1rem;background:rgba(76,175,125,.08);border:1px solid rgba(76,175,125,.2);border-radius:var(--rs);text-align:center}
+.ferr{font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;color:#e03520;padding:.75rem 1rem;background:rgba(224,53,32,.08);border:1px solid rgba(224,53,32,.2);border-radius:var(--rs);text-align:center}
 footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 .finr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .flogo{font-size:1.1rem;font-weight:900}
@@ -377,23 +378,24 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
     <div class="rv">
       <p class="csub">Open to freelance projects, brand collaborations, and long-term creative partnerships. Let's build something that stands out.</p>
       <div class="clist">
-        <a href="mailto:hello@stashlane.in" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><span class="clbl">Email</span><span class="cval">nitinkumarchoudhary36@gmail.com</span></div></a>
-        <a href="https://instagram.com/" target="_blank" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div><div><span class="clbl">Instagram</span><span class="cval">@calmdownnitin</span></div></a>
-      
+        <a href="mailto:hello@stashlane.in" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><span class="clbl">Email</span><span class="cval">hello@stashlane.in</span></div></a>
+        <a href="https://instagram.com/calmdownnitin" target="_blank" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div><div><span class="clbl">Instagram</span><span class="cval">@calmdownnitin</span></div></a>
+
       </div>
     </div>
     <div class="rv" style="--d:.2s">
       <form class="cform" id="cform" novalidate>
         <div class="frow">
-          <div class="fgrp"><label class="flbl" for="fn">Your Name</label><input class="fin" type="text" id="fn" placeholder="John Doe" required/></div>
-          <div class="fgrp"><label class="flbl" for="fe">Email</label><input class="fin" type="email" id="fe" placeholder="john@example.com" required/></div>
+          <div class="fgrp"><label class="flbl" for="fn">Your Name</label><input class="fin" type="text" id="fn" name="name" placeholder="John Doe" required/></div>
+          <div class="fgrp"><label class="flbl" for="fe">Email</label><input class="fin" type="email" id="fe" name="email" placeholder="john@example.com" required/></div>
         </div>
         <div class="fgrp"><label class="flbl" for="fs">Project Type</label>
-          <select class="fin fsel" id="fs"><option value="">Select a service…</option><option>Video Editing</option><option>Graphic Design</option><option>Brand Identity</option><option>Social Media Content</option><option>Full Package</option></select>
+          <select class="fin fsel" id="fs" name="service"><option value="">Select a service…</option><option>Video Editing</option><option>Graphic Design</option><option>Brand Identity</option><option>Social Media Content</option><option>Full Package</option></select>
         </div>
-        <div class="fgrp"><label class="flbl" for="fm">Message</label><textarea class="fin ftx" id="fm" placeholder="Tell me about your project, goals, timeline…" required></textarea></div>
+        <div class="fgrp"><label class="flbl" for="fm">Message</label><textarea class="fin ftx" id="fm" name="message" placeholder="Tell me about your project, goals, timeline…" required></textarea></div>
         <button type="submit" class="btn br bf" id="sbtn"><span id="btxt">Send Message</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <p class="fok hidden" id="fok">✓ Message sent! I'll get back to you within 24 hours.</p>
+        <p class="ferr hidden" id="ferr">✕ Something went wrong. Please try again or email me directly.</p>
       </form>
     </div>
   </div>
@@ -440,11 +442,21 @@ document.querySelectorAll('.cbtn').forEach(btn=>{
     document.querySelectorAll('.gc').forEach(card=>{const s=c==='all'||card.dataset.c===c;card.style.opacity=s?'1':'0.2';card.style.pointerEvents=s?'auto':'none';});
   });
 });
-document.getElementById('cform').addEventListener('submit',e=>{
+document.getElementById('cform').addEventListener('submit',async e=>{
   e.preventDefault();
-  const btn=document.getElementById('sbtn'),txt=document.getElementById('btxt'),ok=document.getElementById('fok');
-  btn.disabled=true;txt.textContent='Sending…';
-  setTimeout(()=>{btn.classList.add('hidden');ok.classList.remove('hidden');e.target.reset();},1400);
+  const btn=document.getElementById('sbtn'),txt=document.getElementById('btxt');
+  const ok=document.getElementById('fok'),err=document.getElementById('ferr');
+  btn.disabled=true; txt.textContent='Sending…';
+  err.classList.add('hidden');
+  const data=new FormData(e.target);
+  try{
+    const res=await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(res.ok){btn.classList.add('hidden');ok.classList.remove('hidden');e.target.reset();}
+    else{throw new Error();}
+  }catch{
+    btn.disabled=false; txt.textContent='Send Message';
+    err.classList.remove('hidden');
+  }
 });
 document.addEventListener('mousemove',e=>{
   const cx=innerWidth/2,cy=innerHeight/2,dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;
