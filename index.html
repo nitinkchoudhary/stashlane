@@ -195,6 +195,23 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 .fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
 .ftop{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color var(--tr)}
 .ftop:hover{color:var(--accent)}
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:8000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .35s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.88);backdrop-filter:blur(10px)}
+.modal-box{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;width:100%;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.modal.open .modal-box{transform:none}
+.modal-img{width:100%;height:100%;object-fit:cover;min-height:420px;display:block}
+.modal-body{padding:2.5rem;display:flex;flex-direction:column;justify-content:space-between;overflow-y:auto;max-height:90vh}
+.modal-tag{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.modal-title{font-size:1.8rem;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:1.5rem}
+.modal-story{font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:1.8rem}
+.modal-story strong{color:var(--ink);font-weight:600}
+.modal-tools{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+.modal-tool{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--border2);border-radius:2rem;color:var(--muted)}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border2);color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr),color var(--tr)}
+.modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media(max-width:680px){.modal-box{grid-template-columns:1fr}.modal-img{min-height:240px;max-height:280px}}
 @media(max-width:1024px){
 .hero{grid-template-columns:1fr;padding-top:100px;gap:2.5rem}
 .h-right{order:-1}.pwrap{width:min(280px,80%);margin:0 auto}
@@ -409,6 +426,32 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
   </div>
 </footer>
 
+<!-- DHANJI MODAL -->
+<div class="modal" id="dhanjiModal">
+  <div class="modal-bg" id="dhanjiModalBg"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="dhanjiClose">✕</button>
+    <img src="Instagram post - dhanji 1st.png" alt="Dhanji Poster" class="modal-img"/>
+    <div class="modal-body">
+      <div>
+        <div class="modal-tag">Print · Poster Design</div>
+        <h2 class="modal-title">Dhanji —<br/>Limited Edition</h2>
+        <p class="modal-story">
+          <strong>Dhanji</strong> is a DHH (Desi Hip Hop) artist from <strong>Ahmedabad</strong> whose music hits hard — raw, street-level, and unapologetically bold. When I listened to his tracks, the sound painted a very specific visual in my head: gritty textures, burning orange tones, and a vintage poster feel that matched the ruggedness of his style.
+        </p>
+        <p class="modal-story">
+          I wanted the poster to <strong>sound like his music looks</strong> — so I leaned into distressed paper textures, a duotone red-orange treatment on his portrait, and a bold hand-crafted typeface for the name. The "RUAB" repeated watermark in the background adds depth and references his artistic identity. The <strong>Limited Edition stamp</strong> in the corner was a deliberate touch — treating the artist like a collector's item.
+        </p>
+        <div class="modal-tools">
+          <span class="modal-tool">Photoshop</span>
+          <span class="modal-tool">Figma</span>
+          <span class="modal-tool">Snapseed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 window.addEventListener('load',()=>{
   document.getElementById('lf').style.width='100%';
@@ -461,6 +504,16 @@ document.getElementById('cform').addEventListener('submit',async e=>{
 document.addEventListener('mousemove',e=>{
   const cx=innerWidth/2,cy=innerHeight/2,dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;
   document.querySelectorAll('.pill').forEach((p,i)=>{const d=(i+1)*7;p.style.transform=`translate(${dx*d}px,${dy*d}px)`;});
+});
+// Dhanji Modal
+const dModal=document.getElementById('dhanjiModal');
+document.getElementById('dhanjiClose').addEventListener('click',()=>dModal.classList.remove('open'));
+document.getElementById('dhanjiModalBg').addEventListener('click',()=>dModal.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')dModal.classList.remove('open');});
+document.querySelectorAll('.gc').forEach(card=>{
+  if(card.querySelector('img[src="Instagram post - dhanji 1st.png"]')){
+    card.addEventListener('click',()=>dModal.classList.add('open'));
+  }
 });
 </script>
 </body>
