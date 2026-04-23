@@ -1,467 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Nitin Kumar Choudhary — Video Editor &amp; Graphic Designer</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-<style>
-:root{--bg:#0a0a0a;--bg2:#111;--bg3:#161616;--ink:#f0ede8;--muted:#666;--muted2:#333;--accent:#b0281a;--accent2:#e03520;--glow:rgba(176,40,26,.35);--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);--fh:'Montserrat',sans-serif;--fm:'DM Mono',monospace;--r:10px;--rs:6px;--tr:.32s cubic-bezier(.4,0,.2,1)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--fh);font-weight:300;line-height:1.65;overflow-x:hidden}
-img{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{border:none;background:none;font-family:inherit;cursor:pointer}
-input,select,textarea{font-family:inherit}
-.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
-.loader--out{opacity:0;visibility:hidden}
-.l-name{display:block;font-size:2.4rem;font-weight:900;letter-spacing:.3em;margin-bottom:1.8rem;color:var(--ink)}
-.l-bar{width:180px;height:1px;background:var(--border2);overflow:hidden;margin:0 auto}
-.l-fill{height:100%;width:0;background:var(--accent);transition:width 1s cubic-bezier(.4,0,.2,1)}
-.cursor{position:fixed;width:7px;height:7px;background:var(--accent2);border-radius:50%;pointer-events:none;z-index:9998;margin:-3.5px 0 0 -3.5px;transition:transform .05s}
-.curf{position:fixed;width:34px;height:34px;border:1px solid rgba(176,40,26,.45);border-radius:50%;pointer-events:none;z-index:9997;margin:-17px 0 0 -17px;transition:border-color var(--tr),width .15s,height .15s,margin .15s,background .15s}
-.cursor.h{transform:scale(0)!important}
-.curf.h{width:50px;height:50px;margin:-25px 0 0 -25px;background:rgba(176,40,26,.07);border-color:var(--accent)}
-.navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5vw;transition:background var(--tr),padding var(--tr)}
-.navbar.sc{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);padding:1rem 5vw;border-bottom:1px solid var(--border)}
-.nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:.06em}
-.ac{color:var(--accent)}
-.nav-ul{display:flex;gap:2.5rem;list-style:none}
-.nl{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);transition:color var(--tr);position:relative}
-.nl::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width var(--tr)}
-.nl:hover{color:var(--ink)}
-.nl:hover::after{width:100%}
-.nav-cta{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.5rem 1.4rem;border:1px solid var(--accent);color:var(--accent);border-radius:2rem;transition:background var(--tr),color var(--tr)}
-.nav-cta:hover{background:var(--accent);color:#fff}
-.hbg{display:none;flex-direction:column;gap:5px;padding:4px}
-.hbg span{display:block;width:24px;height:1.5px;background:var(--ink);transition:transform var(--tr),opacity var(--tr)}
-.hbg.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
-.hbg.o span:nth-child(2){opacity:0}
-.hbg.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
-.mob{position:fixed;inset:0;background:var(--bg);z-index:490;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity var(--tr)}
-.mob.o{opacity:1;pointer-events:auto}
-.ml{font-size:2.4rem;font-weight:900;text-transform:uppercase;transition:color var(--tr)}
-.ml:hover{color:var(--accent)}
-.sec{padding:8rem 5vw;position:relative;overflow:hidden}
-.lbl{font-family:var(--fm);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
-.st{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:900;line-height:1.05;text-transform:uppercase;margin-bottom:1.2rem}
-.st em{font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22)}
-.sd{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:3rem}
-.btn{display:inline-flex;align-items:center;gap:.7rem;padding:.85rem 2rem;border-radius:2rem;font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all var(--tr);cursor:pointer}
-.br{background:var(--accent);color:#fff}
-.br:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 28px var(--glow)}
-.bo{border:1px solid var(--border2);color:var(--muted)}
-.bo:hover{border-color:var(--ink);color:var(--ink)}
-.bf{width:100%;justify-content:center}
-.rv{opacity:0;transform:translateY(32px);transition:opacity .7s ease var(--d,0s),transform .7s ease var(--d,0s)}
-.rv.in{opacity:1;transform:none}
-.hidden{display:none!important}
-/* HERO */
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:0 5vw;padding-top:90px;position:relative;overflow:hidden}
-.h-noise{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
-.h-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
-.pill{position:absolute;font-family:var(--fm);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);background:var(--bg2);padding:.32rem .9rem;border-radius:2rem;pointer-events:none;z-index:1}
-.p1{top:18%;left:3%}.p2{bottom:26%;left:2%}.p3{top:16%;right:3%}
-.h-left{position:relative;z-index:2}
-.eyebrow{font-family:var(--fm);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.6rem;display:flex;align-items:center;gap:.8rem}
-.eyebrow::before{content:'';display:block;width:34px;height:1px;background:var(--accent)}
-.htitle{font-size:clamp(2.8rem,5vw,5rem);font-weight:900;line-height:1.0;text-transform:uppercase;margin-bottom:1.8rem}
-.ln{display:block}
-.it{font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.28)}
-.hi{color:var(--accent2)}
-.hsub{font-size:.93rem;color:var(--muted);line-height:1.85;margin-bottom:2.4rem;max-width:420px}
-.hctas{display:flex;gap:1rem;flex-wrap:wrap}
-.h-right{position:relative;z-index:2;display:flex;justify-content:center;align-items:center}
-.pwrap{position:relative;width:min(360px,90%);aspect-ratio:3/4}
-.himg{width:100%;height:100%;object-fit:cover;border-radius:var(--r);filter:grayscale(15%) contrast(1.05);position:relative;z-index:1}
-.pglow{position:absolute;inset:-2px;border-radius:calc(var(--r) + 2px);background:linear-gradient(135deg,var(--accent),transparent 60%);z-index:0;opacity:.35}
-.pph{width:100%;height:100%;border-radius:var(--r);background:linear-gradient(160deg,#1a0505,#0a0a0a);position:relative;z-index:1;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:900;color:rgba(255,255,255,.06)}
-.sc-card{position:absolute;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);border:1px solid var(--border2);border-radius:var(--rs);padding:.75rem 1.1rem;text-align:center;z-index:3}
-.sc-card strong{display:block;font-size:1.5rem;font-weight:900;color:var(--accent2);line-height:1}
-.sc-card span{font-family:var(--fm);font-size:.58rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.s1{bottom:12%;right:-8%}.s2{top:12%;left:-8%}
-.srhint{position:absolute;bottom:2rem;left:5vw;display:flex;align-items:center;gap:.7rem;font-family:var(--fm);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted2);z-index:2}
-.srtrack{width:50px;height:1px;background:var(--muted2);position:relative;overflow:hidden}
-.srthumb{position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--accent);animation:ssc 2s ease-in-out infinite}
-@keyframes ssc{0%{left:-100%}100%{left:100%}}
-/* REEL */
-.reel-sec{background:var(--bg2)}
-.rhd{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3.5rem;align-items:start}
-.vwrap{margin-bottom:3rem}
-.vbox{width:100%;aspect-ratio:16/9;background:#000;border-radius:var(--r);overflow:hidden;position:relative;box-shadow:0 30px 70px rgba(0,0,0,.6)}
-.vph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-.vbg{position:absolute;inset:0;background:linear-gradient(160deg,#1a0505,#0d0d0d 45%,#050510)}
-.plg{position:relative;z-index:2;width:76px;height:76px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:transform var(--tr),background var(--tr),box-shadow var(--tr)}
-.plg:hover{transform:scale(1.1);background:var(--accent2);box-shadow:0 0 40px var(--glow)}
-.rip{position:absolute;inset:-8px;border:1px solid rgba(176,40,26,.4);border-radius:50%;animation:rip 2s ease-in-out infinite}
-@keyframes rip{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.25);opacity:0}}
-.vlbl{position:absolute;bottom:1.4rem;left:1.4rem;display:flex;align-items:center;gap:.8rem;z-index:2}
-.vdur{font-family:var(--fm);font-size:.68rem;background:rgba(0,0,0,.6);padding:.28rem .7rem;border-radius:2rem;border:1px solid var(--border);color:var(--muted)}
-.vtag{font-family:var(--fm);font-size:.68rem;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
-.vifr{width:100%;height:100%;border:none}
-.vcaps{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:1.4rem}
-.vcap{display:flex;align-items:center;gap:.55rem;font-family:var(--fm);font-size:.66rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
-.vcd{color:var(--accent)}
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
-.rc{aspect-ratio:16/9;border-radius:var(--rs);overflow:hidden;position:relative;cursor:pointer}
-.rt{width:100%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.rc:hover .rt{transform:scale(1.06)}
-.rt1{background:linear-gradient(135deg,#1a0d1a,#2d0f1e)}
-.rt2{background:linear-gradient(135deg,#0d1a1a,#0f2d28)}
-.rt3{background:linear-gradient(135deg,#1a1a0d,#2d270f)}
-.rt4{background:linear-gradient(135deg,#0d0d1a,#150f2d)}
-.ro{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85),transparent 55%);display:flex;flex-direction:column;justify-content:space-between;padding:1rem;opacity:0;transition:opacity var(--tr)}
-.rc:hover .ro{opacity:1}
-.rpsm{width:36px;height:36px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;align-self:center;margin:auto;transform:scale(.6);transition:transform .3s}
-.rc:hover .rpsm{transform:scale(1)}
-.rtag{font-family:var(--fm);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.3rem}
-.rtitle{font-size:.76rem;font-weight:600;color:#fff}
-/* GRAPHICS */
-.gsec{background:var(--bg)}
-.catrow{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:3rem}
-.cbtn{font-family:var(--fm);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;padding:.38rem 1rem;border:1px solid var(--border);border-radius:2rem;color:var(--muted);transition:all var(--tr)}
-.cbtn:hover{border-color:var(--border2);color:var(--ink)}
-.cbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.ggrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;gap:1.2rem}
-.gc{border-radius:var(--rs);overflow:hidden;position:relative;cursor:pointer;transition:opacity .4s,transform .4s}
-.gtall{grid-row:span 2}
-.gi{width:100%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.gc:hover .gi{transform:scale(1.05)}
-.gi1{background:linear-gradient(135deg,#1a0505,#2d0e0e)}
-.gi2{background:linear-gradient(135deg,#050d1a,#0e1e2d)}
-.gi3{background:linear-gradient(135deg,#080808,#1a1a1a)}
-.gi4{background:linear-gradient(135deg,#050a05,#0f1a0f)}
-.gi5{background:linear-gradient(135deg,#0a0505,#1a0808)}
-.gi6{background:linear-gradient(135deg,#05050a,#0a0a1a)}
-.ghov{position:absolute;inset:0;background:rgba(10,10,10,.9);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.4rem;opacity:0;transition:opacity var(--tr)}
-.gc:hover .ghov{opacity:1}
-.ghtitle{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.ghcat{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.garr{position:absolute;top:1.1rem;right:1.1rem;font-size:1.2rem;transition:transform .25s}
-.gc:hover .garr{transform:translate(3px,-3px)}
-.gfoot{position:absolute;bottom:0;left:0;right:0;padding:.65rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);display:flex;justify-content:space-between;align-items:flex-end;transition:opacity var(--tr)}
-.gc:hover .gfoot{opacity:0}
-.gnm{font-size:.78rem;font-weight:600}
-.gtp{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-/* ABOUT */
-.asec{background:var(--bg3)}
-.agrid{display:grid;grid-template-columns:1fr 1.4fr;gap:6vw;align-items:center}
-.apwrap{position:relative;width:100%;aspect-ratio:3/4;max-width:360px}
-.aimg{width:100%;height:100%;object-fit:cover;border-radius:var(--r);filter:grayscale(15%)}
-.aborder{position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:1px solid var(--accent);border-radius:var(--r);opacity:.25;pointer-events:none}
-.abadge{position:absolute;bottom:-1rem;right:-1rem;width:85px;height:85px;background:var(--accent);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3}
-.abadge strong{font-size:1.5rem;font-weight:900;color:#fff;line-height:1}
-.abadge span{font-family:var(--fm);font-size:.52rem;letter-spacing:.1em;color:rgba(255,255,255,.75);text-transform:uppercase}
-.astats{display:flex;gap:1.5rem;margin-top:2.5rem}
-.astat strong{display:block;font-size:1.4rem;font-weight:900}
-.astat span{font-family:var(--fm);font-size:.58rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.bio{font-size:.93rem;color:var(--muted);line-height:1.88;margin-bottom:1rem}
-.bio strong{color:var(--ink);font-weight:700}
-.bio em{color:var(--accent2);font-style:italic}
-.tlbl{font-family:var(--fm);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:1.8rem 0 .8rem}
-.trow{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2rem}
-.tool{display:flex;align-items:center;gap:.45rem;padding:.35rem .9rem;border:1px solid var(--border);border-radius:2rem;font-size:.73rem;font-weight:500;background:rgba(255,255,255,.02);transition:border-color var(--tr),background var(--tr)}
-.tool:hover{border-color:var(--accent);background:rgba(176,40,26,.06)}
-.tdot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-/* CONTACT */
-.csec{background:var(--bg);position:relative;overflow:hidden}
-.cbgtxt{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(5rem,16vw,16rem);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.03);user-select:none;pointer-events:none;white-space:nowrap}
-.cin{display:grid;grid-template-columns:1fr 1fr;gap:6vw;position:relative;z-index:1;margin-top:2.5rem}
-.csub{font-size:.9rem;color:var(--muted);line-height:1.85;max-width:360px;margin-bottom:2.5rem}
-.clist{display:flex;flex-direction:column}
-.crow{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 0;border-bottom:1px solid var(--border);transition:color var(--tr)}
-.crow:first-child{border-top:1px solid var(--border)}
-.crow:hover{color:var(--accent2)}
-.cicon{width:36px;height:36px;border:1px solid var(--border2);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--muted);transition:border-color var(--tr),color var(--tr)}
-.crow:hover .cicon{border-color:var(--accent);color:var(--accent)}
-.clbl{display:block;font-family:var(--fm);font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-.cval{display:block;font-size:.85rem;font-weight:600}
-.cform{display:flex;flex-direction:column;gap:1.3rem}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-.fgrp{display:flex;flex-direction:column;gap:.45rem}
-.flbl{font-family:var(--fm);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-.fin{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:.82rem 1.05rem;color:var(--ink);font-size:.88rem;outline:none;transition:border-color var(--tr),box-shadow var(--tr);-webkit-appearance:none;appearance:none;width:100%}
-.fin:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(176,40,26,.12)}
-.fin::placeholder{color:var(--muted2)}
-.fsel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23555' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
-.fsel option{background:var(--bg2)}
-.ftx{min-height:120px;resize:vertical;line-height:1.7}
-.fok{font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;color:#4caf7d;padding:.75rem 1rem;background:rgba(76,175,125,.08);border:1px solid rgba(76,175,125,.2);border-radius:var(--rs);text-align:center}
-.ferr{font-family:var(--fm);font-size:.72rem;letter-spacing:.1em;color:#e03520;padding:.75rem 1rem;background:rgba(224,53,32,.08);border:1px solid rgba(224,53,32,.2);border-radius:var(--rs);text-align:center}
-footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
-.finr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.flogo{font-size:1.1rem;font-weight:900}
-.fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
-.ftop{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color var(--tr)}
-.ftop:hover{color:var(--accent)}
-@media(max-width:1024px){
-.hero{grid-template-columns:1fr;padding-top:100px;gap:2.5rem}
-.h-right{order:-1}.pwrap{width:min(280px,80%);margin:0 auto}
-.s1{right:-4%}.s2{left:-4%}
-.rhd{grid-template-columns:1fr;gap:1rem}
-.agrid{grid-template-columns:1fr;gap:3rem}
-.apwrap{max-width:260px}
-.cin{grid-template-columns:1fr}
-.ggrid{grid-template-columns:repeat(2,1fr)}
-}
-@media(max-width:768px){
-.sec{padding:5.5rem 5vw}
-.nav-ul,.nav-cta{display:none}
-.hbg{display:flex}
-.htitle{font-size:clamp(2.3rem,9vw,3.5rem)}
-.pill{display:none}
-.rgrid{grid-template-columns:repeat(2,1fr)}
-.ggrid{grid-template-columns:1fr}
-.gtall{grid-row:span 1;aspect-ratio:16/9}
-.frow{grid-template-columns:1fr}
-.cbgtxt{display:none}
-.hero{min-height:auto;padding-bottom:3.5rem}
-.srhint{display:none}
-.cursor,.curf{display:none}
-.astats{flex-wrap:wrap}
-.hctas{flex-direction:column;align-items:flex-start}
-.btn{width:100%;justify-content:center}
-}
-@media(max-width:480px){.rgrid{grid-template-columns:1fr}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nitin Kumar Choudhary — Video Editor & Graphic Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d0d0d;
+      --bg2: #111111;
+      --bg3: #161616;
+      --red: #b0281a;
+      --red2: #d03020;
+      --text: #f0ede8;
+      --muted: #888;
+      --border: rgba(255,255,255,0.07);
+      --font: 'Montserrat', sans-serif;
+      --body: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* CURSOR */
+    #cursor-dot, #cursor-ring {
+      position: fixed; border-radius: 50%; pointer-events: none; z-index: 9999; transition: transform .15s;
+    }
+    #cursor-dot { width: 8px; height: 8px; background: var(--red); transform: translate(-50%,-50%); }
+    #cursor-ring { width: 32px; height: 32px; border: 1.5px solid rgba(176,40,26,.5); transform: translate(-50%,-50%); transition: width .2s, height .2s, opacity .2s; }
+
+    /* LOADER */
+    #loader {
+      position: fixed; inset: 0; background: var(--bg); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; z-index: 9998; transition: opacity .6s .2s;
+    }
+    #loader.done { opacity: 0; pointer-events: none; }
+    .loader-logo { font-family: var(--font); font-weight: 900; font-size: 3rem; letter-spacing: .2em; color: var(--text); }
+    .loader-logo span { color: var(--red); }
+    .loader-bar-wrap { width: 200px; height: 2px; background: rgba(255,255,255,.1); margin-top: 1.5rem; border-radius: 2px; overflow: hidden; }
+    .loader-bar { height: 100%; background: var(--red); width: 0; animation: loadbar 1.4s ease forwards; }
+    @keyframes loadbar { to { width: 100%; } }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 5%;
+      transition: background .3s, padding .3s, backdrop-filter .3s;
+    }
+    nav.scrolled { background: rgba(13,13,13,.85); backdrop-filter: blur(12px); padding: 1rem 5%; border-bottom: 1px solid var(--border); }
+    .nav-logo { font-family: var(--font); font-weight: 900; font-size: 1.3rem; letter-spacing: .1em; text-decoration: none; color: var(--text); }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-family: var(--font); font-size: .75rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--red); color: #fff; padding: .55rem 1.4rem; border-radius: 50px; font-family: var(--font); font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: background .2s, transform .2s; }
+    .nav-cta:hover { background: var(--red2); transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); transition: .3s; }
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--bg); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: var(--font); font-size: 1.5rem; font-weight: 700; color: var(--text); text-decoration: none; }
+    .mobile-close { position: absolute; top: 1.5rem; right: 5%; font-size: 2rem; cursor: pointer; color: var(--muted); }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 0 5%; padding-top: 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
+    .hero-tag { display: inline-flex; align-items: center; gap: .5rem; background: rgba(176,40,26,.12); border: 1px solid rgba(176,40,26,.25); border-radius: 50px; padding: .35rem .9rem; font-family: var(--font); font-size: .7rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: 1.5rem; }
+    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--red); border-radius: 50%; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+    .hero-h1 { font-family: var(--font); font-size: clamp(2.8rem, 5.5vw, 5rem); font-weight: 900; line-height: 1.0; letter-spacing: -.02em; margin-bottom: 1.5rem; }
+    .hero-h1 .accent { color: var(--red); display: block; }
+    .hero-sub { font-size: 1.1rem; line-height: 1.7; color: #aaa; max-width: 480px; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: .6rem; background: var(--red); color: #fff; padding: .85rem 2rem; border-radius: 50px; font-family: var(--font); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: background .2s, transform .2s; }
+    .btn-primary:hover { background: var(--red2); transform: translateY(-2px); }
+    .btn-secondary { display: inline-flex; align-items: center; gap: .6rem; border: 1.5px solid rgba(255,255,255,.2); color: var(--text); padding: .85rem 2rem; border-radius: 50px; font-family: var(--font); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; text-decoration: none; transition: border-color .2s, transform .2s; }
+    .btn-secondary:hover { border-color: rgba(255,255,255,.5); transform: translateY(-2px); }
+    .hero-right { display: flex; flex-direction: column; gap: 1rem; }
+    .stat-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem 1.8rem; }
+    .stat-card .num { font-family: var(--font); font-size: 2.2rem; font-weight: 900; color: var(--text); }
+    .stat-card .num span { color: var(--red); }
+    .stat-card .label { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hero-pill { background: rgba(176,40,26,.1); border: 1px solid rgba(176,40,26,.2); border-radius: 50px; padding: .5rem 1.2rem; font-family: var(--font); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); display: inline-block; }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+    .bg-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+    #hero > *:not(.bg-grid) { position: relative; z-index: 1; }
+
+    /* SECTIONS */
+    section { padding: 7rem 5%; }
+    .section-tag { display: inline-flex; align-items: center; gap: .5rem; font-family: var(--font); font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+    .section-tag::before { content:''; width:20px; height:1.5px; background:var(--red); }
+    .section-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; max-width: 500px; margin-bottom: 3rem; }
+
+    /* VIDEO */
+    #reel { background: var(--bg2); }
+    .reel-player { position: relative; width: 100%; max-width: 900px; margin: 0 auto 3rem; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); background: #000; aspect-ratio: 16/9; }
+    .reel-player iframe { width: 100%; height: 100%; display: block; }
+    .reel-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #0a0a0a; cursor: pointer; }
+    .play-btn { width: 72px; height: 72px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .2s, background .2s; }
+    .play-btn:hover { transform: scale(1.1); background: var(--red2); }
+    .play-btn svg { width: 28px; fill: #fff; margin-left: 4px; }
+    .reel-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .reel-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+    .reel-thumb { aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; }
+    .reel-thumb svg { width: 24px; fill: rgba(255,255,255,.15); }
+    .reel-info { padding: .8rem 1rem; }
+    .reel-info h4 { font-family: var(--font); font-size: .75rem; font-weight: 700; margin-bottom: .2rem; }
+    .reel-info p { font-size: .7rem; color: var(--muted); }
+
+    /* GRAPHICS */
+    #graphics { background: var(--bg); }
+    .filter-btns { display: flex; gap: .6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .filter-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: .45rem 1.1rem; border-radius: 50px; font-family: var(--font); font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: .2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--red); border-color: var(--red); color: #fff; }
+    .graphics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+    .g-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); position: relative; aspect-ratio: 4/3; background: var(--bg3); cursor: pointer; }
+    .g-card-bg { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; transition: transform .4s; }
+    .g-card:hover .g-card-bg { transform: scale(1.05); }
+    .g-overlay { position: absolute; inset: 0; background: rgba(13,13,13,.88); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.2rem; opacity: 0; transition: opacity .3s; }
+    .g-card:hover .g-overlay { opacity: 1; }
+    .g-overlay h4 { font-family: var(--font); font-size: .85rem; font-weight: 700; margin-bottom: .3rem; }
+    .g-overlay p { font-size: .75rem; color: var(--muted); }
+    .g-cat { font-family: var(--font); font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: .4rem; }
+
+    /* ABOUT */
+    #about { background: var(--bg2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; align-items: center; }
+    .about-img-wrap { position: relative; }
+    .about-img { width: 100%; aspect-ratio: 3/4; border-radius: 18px; object-fit: cover; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-size: 5rem; border: 1px solid var(--border); overflow: hidden; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .exp-badge { position: absolute; bottom: -1.5rem; right: -1.5rem; background: var(--red); color: #fff; border-radius: 14px; padding: 1.2rem 1.5rem; font-family: var(--font); text-align: center; }
+    .exp-badge .num { font-size: 2rem; font-weight: 900; display: block; }
+    .exp-badge .lbl { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .about-bio { font-size: 1rem; line-height: 1.8; color: #bbb; margin-bottom: 2rem; }
+    .tools-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+    .tool-chip { background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: .4rem .9rem; font-family: var(--font); font-size: .7rem; font-weight: 600; color: var(--muted); }
+    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .a-stat { text-align: center; background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .a-stat .n { font-family: var(--font); font-size: 1.6rem; font-weight: 900; color: var(--red); }
+    .a-stat .l { font-size: .72rem; color: var(--muted); margin-top: .2rem; }
+
+    /* CONTACT */
+    #contact { background: var(--bg); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; }
+    .contact-links { display: flex; flex-direction: column; gap: .8rem; }
+    .contact-link { display: flex; align-items: center; gap: .8rem; text-decoration: none; color: var(--text); font-family: var(--font); font-size: .85rem; font-weight: 600; transition: color .2s; }
+    .contact-link:hover { color: var(--red); }
+    .contact-link .icon { width: 40px; height: 40px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; font-family: var(--font); font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+      padding: .85rem 1rem; color: var(--text); font-family: var(--body); font-size: .9rem;
+      outline: none; transition: border-color .2s;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red); }
+    .form-group select option { background: var(--bg3); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .btn-submit { width: 100%; background: var(--red); color: #fff; border: none; border-radius: 10px; padding: 1rem; font-family: var(--font); font-size: .85rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; cursor: pointer; transition: background .2s, transform .2s; }
+    .btn-submit:hover { background: var(--red2); transform: translateY(-1px); }
+    .form-success { display: none; text-align: center; padding: 2rem; background: rgba(176,40,26,.08); border: 1px solid rgba(176,40,26,.2); border-radius: 12px; }
+    .form-success h4 { font-family: var(--font); font-weight: 800; margin-bottom: .5rem; }
+    .form-success p { color: var(--muted); font-size: .9rem; }
+
+    /* FOOTER */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 2.5rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-logo { font-family: var(--font); font-weight: 900; font-size: 1rem; letter-spacing: .1em; }
+    .footer-logo span { color: var(--red); }
+    footer p { color: var(--muted); font-size: .8rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
+      .reel-cards { grid-template-columns: 1fr 1fr; }
+      .graphics-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      body { cursor: auto; }
+      #cursor-dot, #cursor-ring { display: none; }
+    }
+    @media (max-width: 540px) {
+      .reel-cards { grid-template-columns: 1fr; }
+      .graphics-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .stat-row { grid-template-columns: 1fr; }
+      .exp-badge { right: 0; bottom: -1rem; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="loader" id="loader">
-  <div><span class="l-name">NKC</span><div class="l-bar"><div class="l-fill" id="lf"></div></div></div>
-</div>
-<div class="cursor" id="cur"></div>
-<div class="curf" id="curf"></div>
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 
-<nav class="navbar" id="nav">
-  <a class="nav-logo" href="#">NKC<span class="ac">.</span></a>
-  <ul class="nav-ul">
-    <li><a href="#reel" class="nl">Work</a></li>
-    <li><a href="#graphics" class="nl">Design</a></li>
-    <li><a href="#about" class="nl">About</a></li>
-    <li><a href="#contact" class="nl">Contact</a></li>
+<!-- LOADER (original NKC) -->
+<div id="loader">
+  <div class="loader-logo">NK<span>C</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">NK<span>C</span></a>
+  <ul class="nav-links">
+    <li><a href="#reel">Work</a></li>
+    <li><a href="#graphics">Design</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#contact" class="nav-cta">Hire Me</a>
-  <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 </nav>
-<div class="mob" id="mob">
-  <a href="#reel" class="ml">Work</a>
-  <a href="#graphics" class="ml">Design</a>
-  <a href="#about" class="ml">About</a>
-  <a href="#contact" class="ml">Contact</a>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" id="mobileClose">✕</span>
+  <a href="#reel" onclick="closeMobile()">Work</a>
+  <a href="#graphics" onclick="closeMobile()">Design</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="h-noise"></div><div class="h-grid"></div>
-  <div class="pill p1">Video Editing</div>
-  <div class="pill p2">Motion Graphics</div>
-  <div class="pill p3">Brand Design</div>
-  <div class="h-left">
-    <p class="eyebrow rv" style="--d:.1s">Based in Greater Noida, India</p>
-    <h1 class="htitle rv" style="--d:.25s">
-      <span class="ln">I create visuals</span>
-      <span class="ln it">that make people</span>
-      <span class="ln">stop <span class="hi">scrolling</span><span class="ac">.</span></span>
-    </h1>
-    <p class="hsub rv" style="--d:.4s">Video editor &amp; graphic designer crafting cinematic edits, bold identities, and scroll-stopping content for brands.</p>
-    <div class="hctas rv" style="--d:.55s">
-      <a href="#reel" class="btn br">View My Work <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <a href="#contact" class="btn bo">Let's Talk</a>
+<section id="hero">
+  <div class="bg-grid"></div>
+  <div class="hero-grid">
+    <div class="hero-left reveal">
+      <div class="hero-tag">Available for Freelance</div>
+      <h1 class="hero-h1">
+        I create visuals that make people
+        <span class="accent">stop scrolling.</span>
+      </h1>
+      <p class="hero-sub">Video editor & graphic designer crafting cinematic edits, bold identities, and scroll-stopping content for brands and creators.</p>
+      <div class="hero-btns">
+        <a href="#reel" class="btn-primary">View My Work →</a>
+        <a href="#contact" class="btn-secondary">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-right reveal">
+      <div class="hero-pills">
+        <span class="hero-pill">After Effects</span>
+        <span class="hero-pill">Premiere Pro</span>
+        <span class="hero-pill">Photoshop</span>
+        <span class="hero-pill">Figma</span>
+      </div>
+      <div class="stat-card">
+        <div class="num">50<span>+</span></div>
+        <div class="label">Projects Completed</div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="num">3<span>+</span></div>
+          <div class="label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="num">30<span>+</span></div>
+          <div class="label">Happy Clients</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="h-right rv" style="--d:.35s">
-    <div class="pwrap">
-      <div class="pph">NKC</div>
-      <!-- Replace div above with: <img src="your-photo.jpg" alt="Nitin" class="himg"> -->
-      <div class="pglow"></div>
-      <div class="sc-card s1"><strong>50+</strong><span>Projects</span></div>
-      <div class="sc-card s2"><strong>3+</strong><span>Yrs Exp.</span></div>
-    </div>
-  </div>
-  <div class="srhint"><div class="srtrack"><div class="srthumb"></div></div><span>Scroll</span></div>
 </section>
 
-<!-- REEL -->
-<section class="sec reel-sec" id="reel">
-  <div class="lbl rv">Selected Work</div>
-  <div class="rhd">
-    <h2 class="st rv">Video Editing<br><em>Reel.</em></h2>
-    <p class="sd rv">From punchy 15-second social reels to full cinematic productions — I edit with rhythm, intention, and a story in mind.</p>
-  </div>
-  <div class="vwrap rv">
-    <div class="vbox">
-      <div class="vph" id="vph">
-        <div class="vbg"></div>
-        <button class="plg" id="plg" aria-label="Play"><div class="rip"></div><svg width="26" height="26" viewBox="0 0 26 26" fill="white"><polygon points="5,2 24,13 5,24"/></svg></button>
-        <div class="vlbl"><span class="vdur">03:42</span><span class="vtag">2024 Showreel</span></div>
+<!-- VIDEO REEL -->
+<section id="reel">
+  <div class="section-tag">My Work</div>
+  <h2 class="section-title reveal">Video Reel</h2>
+  <p class="section-sub reveal">Cinematic edits, brand films, social media content & more.</p>
+  <div class="reel-player reveal" id="reelPlayer" data-src="YOUR_VIDEO_ID">
+    <div class="reel-placeholder" onclick="loadVideo()">
+      <div class="play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
-      <iframe id="vfr" class="vifr hidden" src="" data-src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen title="Showreel"></iframe>
-    </div>
-    <div class="vcaps">
-      <span class="vcap"><span class="vcd">◆</span>Cinematic edits</span>
-      <span class="vcap"><span class="vcd">◆</span>Social media reels</span>
-      <span class="vcap"><span class="vcd">◆</span>Brand &amp; ad films</span>
-      <span class="vcap"><span class="vcd">◆</span>Motion graphics</span>
     </div>
   </div>
-  <div class="rgrid">
-    <div class="rc rv" style="--d:0s"><div class="rt rt1"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Brand Film</span><p class="rtitle">Product Launch — 60s Cut</p></div></div></div>
-    <div class="rc rv" style="--d:.08s"><div class="rt rt2"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Social Media</span><p class="rtitle">Instagram Reels Pack</p></div></div></div>
-    <div class="rc rv" style="--d:.16s"><div class="rt rt3"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Cinematic</span><p class="rtitle">Wedding Highlight Film</p></div></div></div>
-    <div class="rc rv" style="--d:.24s"><div class="rt rt4"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Motion</span><p class="rtitle">Animated Explainer</p></div></div></div>
+  <div class="reel-cards reveal">
+    <div class="reel-card"><div class="reel-thumb"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="reel-info"><h4>Brand Film</h4><p>Commercial & brand story</p></div></div>
+    <div class="reel-card"><div class="reel-thumb"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="reel-info"><h4>Social Media</h4><p>Reels & short form</p></div></div>
+    <div class="reel-card"><div class="reel-thumb"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="reel-info"><h4>Cinematic</h4><p>Narrative & cinematic edits</p></div></div>
+    <div class="reel-card"><div class="reel-thumb"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div><div class="reel-info"><h4>Motion Graphics</h4><p>Motion & animation</p></div></div>
   </div>
 </section>
 
 <!-- GRAPHICS -->
-<section class="sec gsec" id="graphics">
-  <div class="lbl rv">Design Work</div>
-  <h2 class="st rv">Graphics &amp;<br><em>Visual Design.</em></h2>
-  <p class="sd rv">Logos, social kits, posters, and brand identities — built around clarity, impact, and lasting impression.</p>
-  <div class="catrow rv">
-    <button class="cbtn on" data-c="all">All</button>
-    <button class="cbtn" data-c="branding">Branding</button>
-    <button class="cbtn" data-c="social">Social</button>
-    <button class="cbtn" data-c="print">Print</button>
+<section id="graphics">
+  <div class="section-tag">Design Work</div>
+  <h2 class="section-title reveal">Graphics Showcase</h2>
+  <p class="section-sub reveal">Thumbnails, posters, social media designs & brand identities.</p>
+  <div class="filter-btns reveal">
+    <button class="filter-btn active" onclick="filterCards(this,'all')">All</button>
+    <button class="filter-btn" onclick="filterCards(this,'branding')">Branding</button>
+    <button class="filter-btn" onclick="filterCards(this,'social')">Social Media</button>
+    <button class="filter-btn" onclick="filterCards(this,'thumb')">Thumbnails</button>
+    <button class="filter-btn" onclick="filterCards(this,'print')">Print</button>
   </div>
-  <div class="ggrid">
-    <div class="gc rv" data-c="branding" style="--d:0s"><div class="gi gi1"></div><div class="ghov"><p class="ghtitle">Brand Identity Kit</p><span class="ghcat">Logo · Typography · Colors</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Brand Identity</span><span class="gtp">Branding</span></div></div>
-    <div class="gc rv" data-c="social" style="--d:.07s"><div class="gi gi2"></div><div class="ghov"><p class="ghtitle">Social Media Pack</p><span class="ghcat">Instagram · Stories · Reels</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Social Kit</span><span class="gtp">Social</span></div></div>
-    <div class="gc gtall rv" data-c="print" style="--d:.14s"><div class="gi gi3"></div><div class="ghov"><p class="ghtitle">Event Poster Series</p><span class="ghcat">Print · Digital</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Poster Design</span><span class="gtp">Print</span></div></div>
-    <div class="gc rv" data-c="branding" style="--d:.21s"><div class="gi gi4"></div><div class="ghov"><p class="ghtitle">Logo Design</p><span class="ghcat">Wordmark · Icon</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Logo System</span><span class="gtp">Branding</span></div></div>
-    <div class="gc rv" data-c="social" style="--d:.28s"><div class="gi gi5"></div><div class="ghov"><p class="ghtitle">YouTube Thumbnails</p><span class="ghcat">High CTR Design</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Thumbnails</span><span class="gtp">Social</span></div></div>
-    <div class="gc rv" data-c="branding" style="--d:.35s"><div class="gi gi6"></div><div class="ghov"><p class="ghtitle">Brand Guidelines</p><span class="ghcat">Full Style System</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Brand Manual</span><span class="gtp">Branding</span></div></div>
+  <div class="graphics-grid reveal">
+    <div class="g-card" data-cat="thumb"><div class="g-card-bg" style="background:linear-gradient(135deg,#1a0a0a,#2d1010)">🎬</div><div class="g-overlay"><div class="g-cat">Thumbnail</div><h4>YouTube Thumbnail</h4><p>Bold, click-worthy design</p></div></div>
+    <div class="g-card" data-cat="branding"><div class="g-card-bg" style="background:linear-gradient(135deg,#0a0a1a,#10102d)">🎨</div><div class="g-overlay"><div class="g-cat">Branding</div><h4>Brand Identity</h4><p>Logo & visual system</p></div></div>
+    <div class="g-card" data-cat="social"><div class="g-card-bg" style="background:linear-gradient(135deg,#0a1a0a,#102d10)">📱</div><div class="g-overlay"><div class="g-cat">Social Media</div><h4>Instagram Post</h4><p>Feed & story design</p></div></div>
+    <div class="g-card" data-cat="print"><div class="g-card-bg" style="background:linear-gradient(135deg,#1a1a0a,#2d2d10)">🖼️</div><div class="g-overlay"><div class="g-cat">Print</div><h4>Event Poster</h4><p>Print-ready artwork</p></div></div>
+    <div class="g-card" data-cat="social"><div class="g-card-bg" style="background:linear-gradient(135deg,#1a0a1a,#2d102d)">✨</div><div class="g-overlay"><div class="g-cat">Social Media</div><h4>Reel Cover</h4><p>Aesthetic cover design</p></div></div>
+    <div class="g-card" data-cat="branding"><div class="g-card-bg" style="background:linear-gradient(135deg,#0a1a1a,#102d2d)">🏷️</div><div class="g-overlay"><div class="g-cat">Branding</div><h4>Business Card</h4><p>Premium print design</p></div></div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="sec asec" id="about">
-  <div class="agrid">
-    <div class="rv">
-      <div class="apwrap">
-        <img src="your-photo.jpg" alt="Nitin Kumar Choudhary" class="aimg" onerror="this.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:10px;background:linear-gradient(160deg,#1a0505,#0a0a0a)'"/>
-        <div class="aborder"></div>
-        <div class="abadge"><strong>3+</strong><span>Years</span></div>
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img">
+        <img src="your-photo.jpg" alt="Nitin Kumar Choudhary" onerror="this.style.display='none';this.parentElement.innerHTML+='👤'" />
       </div>
-      <div class="astats">
-        <div class="astat"><strong>50+</strong><span>Projects</span></div>
-        <div class="astat"><strong>30+</strong><span>Clients</span></div>
-        <div class="astat"><strong>100%</strong><span>Dedication</span></div>
+      <div class="exp-badge">
+        <span class="num">3+</span>
+        <span class="lbl">Years Exp.</span>
       </div>
     </div>
-    <div class="rv" style="--d:.15s">
-      <div class="lbl">About Me</div>
-      <h2 class="st">The person<br><em>behind the lens.</em></h2>
-      <p class="bio">Hey — I'm <strong>Nitin Kumar Choudhary</strong>, a video editor and graphic designer based in Greater Noida, India. I believe great visuals aren't just pretty — they're strategic. They stop thumbs, build trust, and move people.</p>
-      <p class="bio">I work with creators, startups, and brands who want content that actually <em>says something</em>. From a 15-second reel to a full cinematic brand film — I bring precision, rhythm, and storytelling to every project.</p>
-      <p class="tlbl">Tools I work with</p>
-      <div class="trow">
-        <span class="tool"><span class="tdot"></span>Premiere Pro</span>
-        <span class="tool"><span class="tdot"></span>After Effects</span>
-        <span class="tool"><span class="tdot"></span>DaVinci Resolve</span>
-        <span class="tool"><span class="tdot"></span>Photoshop</span>
-        <span class="tool"><span class="tdot"></span>Illustrator</span>
-        <span class="tool"><span class="tdot"></span>Figma</span>
+    <div class="reveal">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">I'm Nitin.<br>I make things look good.</h2>
+      <p class="about-bio">I'm a video editor and graphic designer based in India. I love telling stories through visuals — whether that's a cinematic brand film, a thumb-stopping social post, or a clean brand identity. I work with startups, creators, and brands who want content that actually converts.</p>
+      <p class="about-bio">When I'm not editing, I'm probably studying new techniques, obsessing over color grading, or scrolling through motion graphics for inspiration.</p>
+      <div class="tools-row">
+        <span class="tool-chip">Premiere Pro</span>
+        <span class="tool-chip">After Effects</span>
+        <span class="tool-chip">Photoshop</span>
+        <span class="tool-chip">Illustrator</span>
+        <span class="tool-chip">Figma</span>
+        <span class="tool-chip">DaVinci Resolve</span>
       </div>
-      <a href="#contact" class="btn br">Work With Me <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div class="about-stats">
+        <div class="a-stat"><div class="n">50+</div><div class="l">Projects Done</div></div>
+        <div class="a-stat"><div class="n">30+</div><div class="l">Happy Clients</div></div>
+        <div class="a-stat"><div class="n">3+</div><div class="l">Years Active</div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="sec csec" id="contact">
-  <div class="cbgtxt">CONTACT</div>
-  <div class="lbl rv">Get In Touch</div>
-  <h2 class="st rv">Have a project<br><em>in mind?</em></h2>
-  <div class="cin">
-    <div class="rv">
-      <p class="csub">Open to freelance projects, brand collaborations, and long-term creative partnerships. Let's build something that stands out.</p>
-      <div class="clist">
-        <a href="mailto:hello@stashlane.in" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div><div><span class="clbl">Email</span><span class="cval">nitinkumarchoudhary36@gmail.com</span></div></a>
-        <a href="https://instagram.com/calmdownnitin" target="_blank" class="crow"><div class="cicon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></div><div><span class="clbl">Instagram</span><span class="cval">@calmdownnitin</span></div></a>
-
+<section id="contact">
+  <div class="section-tag">Get In Touch</div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="section-title">Let's work<br>together.</h2>
+      <p class="section-sub" style="margin-bottom:2rem;">Have a project in mind? Let's make something great. I'm available for freelance work.</p>
+      <div class="contact-links">
+        <a href="mailto:nitinkumarchoudhary36@gmail.com" class="contact-link">
+          <div class="icon">✉️</div>
+          nitinkumarchoudhary36@gmail.com
+        </a>
+        <a href="https://instagram.com/calmdownnitin" target="_blank" class="contact-link">
+          <div class="icon">📸</div>
+          @calmdownnitin
+        </a>
       </div>
     </div>
-    <div class="rv" style="--d:.2s">
-      <form class="cform" id="cform" novalidate>
-        <div class="frow">
-          <div class="fgrp"><label class="flbl" for="fn">Your Name</label><input class="fin" type="text" id="fn" name="name" placeholder="John Doe" required/></div>
-          <div class="fgrp"><label class="flbl" for="fe">Email</label><input class="fin" type="email" id="fe" name="email" placeholder="john@example.com" required/></div>
+    <div class="reveal">
+      <div id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" name="name" placeholder="Your name" required /></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" placeholder="your@email.com" required /></div>
         </div>
-        <div class="fgrp"><label class="flbl" for="fs">Project Type</label>
-          <select class="fin fsel" id="fs" name="service"><option value="">Select a service…</option><option>Video Editing</option><option>Graphic Design</option><option>Brand Identity</option><option>Social Media Content</option><option>Full Package</option></select>
+        <div class="form-group">
+          <label>Service</label>
+          <select name="service">
+            <option value="">Select a service</option>
+            <option value="video">Video Editing</option>
+            <option value="graphics">Graphic Design</option>
+            <option value="social">Social Media Content</option>
+            <option value="branding">Branding</option>
+            <option value="other">Other</option>
+          </select>
         </div>
-        <div class="fgrp"><label class="flbl" for="fm">Message</label><textarea class="fin ftx" id="fm" name="message" placeholder="Tell me about your project, goals, timeline…" required></textarea></div>
-        <button type="submit" class="btn br bf" id="sbtn"><span id="btxt">Send Message</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <p class="fok hidden" id="fok">✓ Message sent! I'll get back to you within 24 hours.</p>
-        <p class="ferr hidden" id="ferr">✕ Something went wrong. Please try again or email me directly.</p>
-      </form>
+        <div class="form-group"><label>Message</label><textarea name="message" placeholder="Tell me about your project..." required></textarea></div>
+        <button class="btn-submit" onclick="sendForm(event)">Send Message →</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <h4>Message Sent! 🎉</h4>
+        <p>Thanks for reaching out. I'll get back to you within 24 hours.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div class="finr">
-    <span class="flogo">NKC<span class="ac">.</span></span>
-    <span class="fcopy">© 2026 Nitin Kumar Choudhary. All rights reserved.</span>
-    <a href="#top" class="ftop">Back to top ↑</a>
-  </div>
+  <div class="footer-logo">NK<span>C</span></div>
+  <p>© 2026 Nitin Kumar Choudhary. All rights reserved.</p>
 </footer>
 
 <script>
-window.addEventListener('load',()=>{
-  document.getElementById('lf').style.width='100%';
-  setTimeout(()=>document.getElementById('loader').classList.add('loader--out'),1100);
-});
-const cur=document.getElementById('cur'),curf=document.getElementById('curf');
-let mx=0,my=0,fx=0,fy=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate(${mx}px,${my}px)`;});
-(function tick(){fx+=(mx-fx)*.12;fy+=(my-fy)*.12;curf.style.transform=`translate(${fx}px,${fy}px)`;requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,.rc,.gc').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.classList.add('h');curf.classList.add('h');});
-  el.addEventListener('mouseleave',()=>{cur.classList.remove('h');curf.classList.remove('h');});
-});
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>60));
-const hbg=document.getElementById('hbg'),mob=document.getElementById('mob');
-hbg.addEventListener('click',()=>{hbg.classList.toggle('o');mob.classList.toggle('o');});
-document.querySelectorAll('.ml').forEach(l=>l.addEventListener('click',()=>{hbg.classList.remove('o');mob.classList.remove('o');}));
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});
-});
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-document.getElementById('plg').addEventListener('click',()=>{
-  const f=document.getElementById('vfr');f.src=f.dataset.src;
-  document.getElementById('vph').classList.add('hidden');f.classList.remove('hidden');
-});
-document.querySelectorAll('.cbtn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-    const c=btn.dataset.c;
-    document.querySelectorAll('.gc').forEach(card=>{const s=c==='all'||card.dataset.c===c;card.style.opacity=s?'1':'0.2';card.style.pointerEvents=s?'auto':'none';});
+  // Cursor
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  document.addEventListener('mousemove', e => {
+    dot.style.left = ring.style.left = e.clientX + 'px';
+    dot.style.top = ring.style.top = e.clientY + 'px';
   });
-});
-document.getElementById('cform').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const btn=document.getElementById('sbtn'),txt=document.getElementById('btxt');
-  const ok=document.getElementById('fok'),err=document.getElementById('ferr');
-  btn.disabled=true; txt.textContent='Sending…';
-  err.classList.add('hidden');
-  const data=new FormData(e.target);
-  try{
-    const res=await fetch('https://formspree.io/f/xzdyabzn',{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(res.ok){btn.classList.add('hidden');ok.classList.remove('hidden');e.target.reset();}
-    else{throw new Error();}
-  }catch{
-    btn.disabled=false; txt.textContent='Send Message';
-    err.classList.remove('hidden');
+
+  // Loader — dismiss after bar animation completes
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loader = document.getElementById('loader');
+      loader.classList.add('done');
+      setTimeout(() => loader.style.display = 'none', 700);
+    }, 1600);
+  });
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', scrollY > 60);
+  });
+
+  // Hamburger
+  document.getElementById('hamburger').onclick = () => document.getElementById('mobileMenu').classList.add('open');
+  document.getElementById('mobileClose').onclick = closeMobile;
+  function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); }
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Video load
+  function loadVideo() {
+    const player = document.getElementById('reelPlayer');
+    const id = player.dataset.src;
+    if (id === 'YOUR_VIDEO_ID') { alert('Paste your YouTube video ID into data-src in the HTML!'); return; }
+    player.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1" frameborder="0" allowfullscreen allow="autoplay"></iframe>`;
   }
-});
-document.addEventListener('mousemove',e=>{
-  const cx=innerWidth/2,cy=innerHeight/2,dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;
-  document.querySelectorAll('.pill').forEach((p,i)=>{const d=(i+1)*7;p.style.transform=`translate(${dx*d}px,${dy*d}px)`;});
-});
+
+  // Filter cards
+  function filterCards(btn, cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.g-card').forEach(c => {
+      c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'block' : 'none';
+    });
+  }
+
+  // Form submit via Formspree
+  async function sendForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const btn = form.querySelector('.btn-submit');
+    const name = form.querySelector('[name=name]').value;
+    const email = form.querySelector('[name=email]').value;
+    const service = form.querySelector('[name=service]').value;
+    const message = form.querySelector('[name=message]').value;
+    if (!name || !email || !message) { alert('Please fill in all required fields.'); return; }
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORMSPREE_ID', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ name, email, service, message })
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+      } else { throw new Error(); }
+    } catch {
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+      alert('Something went wrong. Please email me directly at nitinkumarchoudhary36@gmail.com');
+    }
+  }
 </script>
 </body>
 </html>
