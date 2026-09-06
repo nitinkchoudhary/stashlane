@@ -1,1 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Posters — Nitin Kumar Choudhary</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#0a0a0a;--bg2:#111;--bg3:#161616;--ink:#f0ede8;--muted:#666;--muted2:#333;--accent:#b0281a;--accent2:#e03520;--glow:rgba(176,40,26,.35);--border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.12);--fh:'Montserrat',sans-serif;--fm:'DM Mono',monospace;--r:10px;--rs:6px;--tr:.32s cubic-bezier(.4,0,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--fh);font-weight:300;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5vw;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:.06em}.ac{color:var(--accent)}
+.nav-back{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);transition:color var(--tr)}
+.nav-back:hover{color:var(--ink)}
+.sec{padding:10rem 5vw 7rem;min-height:100vh}
+.lbl{font-family:var(--fm);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
+.st{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:900;line-height:1.05;text-transform:uppercase;margin-bottom:1.2rem}
+.st em{font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22)}
+.sd{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:3.5rem}
+.ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.card{border-radius:var(--rs);overflow:hidden;position:relative;background:var(--bg2);border:1px solid var(--border);transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr);cursor:pointer}
+.card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 20px 45px rgba(0,0,0,.35)}
+.card img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.card:hover img{transform:scale(1.03)}
+.info{padding:1rem 1.1rem;background:var(--bg2)}
+.tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.3rem}
+.title{font-size:.82rem;font-weight:600}
+.footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
+.finr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.flogo{font-size:1.1rem;font-weight:900}.fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
+@media(max-width:900px){.ggrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.sec{padding:8rem 5vw 5rem}.ggrid{grid-template-columns:1fr}.navbar{padding:1.1rem 5vw}.st{font-size:2.5rem}}
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <a class="nav-logo" href="index.html">NKC<span class="ac">.</span></a>
+  <a class="nav-back" href="index.html#graphics">← Back to Graphic Design</a>
+</nav>
+
+<main class="sec">
+  <div class="lbl">Graphic Design / Posters</div>
+  <h1 class="st">Posters<br><em>Gallery.</em></h1>
+  <p class="sd">A selection of poster and print-focused visual work, built with bold typography, composition, and atmosphere.</p>
+
+  <div class="ggrid">
+    <article class="card">
+      <img src="assets/posters/Instagram post - dhanji 1st.png" alt="Dhanji Poster"/>
+      <div class="info">
+        <span class="tag">Poster · Print Design</span>
+        <p class="title">Dhanji — Limited Edition</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="finr">
+    <span class="flogo">NKC<span class="ac">.</span></span>
+    <span class="fcopy">© 2026 Nitin Kumar Choudhary. All rights reserved.</span>
+    <a class="nav-back" href="index.html">Back to home ↑</a>
+  </div>
+</footer>
+</body>
+</html>
 
