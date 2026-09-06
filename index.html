@@ -119,31 +119,31 @@ input,select,textarea{font-family:inherit}
 .rtitle{font-size:.76rem;font-weight:600;color:#fff}
 /* GRAPHICS */
 .gsec{background:var(--bg)}
-.catrow{display:flex;gap:.65rem;flex-wrap:wrap;margin-bottom:3rem}
-.cbtn{font-family:var(--fm);font-size:.63rem;letter-spacing:.14em;text-transform:uppercase;padding:.38rem 1rem;border:1px solid var(--border);border-radius:2rem;color:var(--muted);transition:all var(--tr)}
-.cbtn:hover{border-color:var(--border2);color:var(--ink)}
-.cbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.ggrid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:250px;gap:1.2rem}
-.gc{border-radius:var(--rs);overflow:hidden;position:relative;cursor:pointer;transition:opacity .4s,transform .4s}
-.gtall{grid-row:span 2}
-.gi{width:100%;height:100%;transition:transform .5s cubic-bezier(.4,0,.2,1)}
-.gc:hover .gi{transform:scale(1.05)}
-.gi1{background:linear-gradient(135deg,#1a0505,#2d0e0e)}
-.gi2{background:linear-gradient(135deg,#050d1a,#0e1e2d)}
-.gi3{background:linear-gradient(135deg,#080808,#1a1a1a)}
-.gi4{background:linear-gradient(135deg,#050a05,#0f1a0f)}
-.gi5{background:linear-gradient(135deg,#0a0505,#1a0808)}
-.gi6{background:linear-gradient(135deg,#05050a,#0a0a1a)}
-.ghov{position:absolute;inset:0;background:rgba(10,10,10,.9);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.4rem;opacity:0;transition:opacity var(--tr)}
-.gc:hover .ghov{opacity:1}
-.ghtitle{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
-.ghcat{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
-.garr{position:absolute;top:1.1rem;right:1.1rem;font-size:1.2rem;transition:transform .25s}
-.gc:hover .garr{transform:translate(3px,-3px)}
-.gfoot{position:absolute;bottom:0;left:0;right:0;padding:.65rem 1rem;background:linear-gradient(to top,rgba(0,0,0,.7),transparent);display:flex;justify-content:space-between;align-items:flex-end;transition:opacity var(--tr)}
-.gc:hover .gfoot{opacity:0}
-.gnm{font-size:.78rem;font-weight:600}
-.gtp{font-family:var(--fm);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ABOUT */
 .asec{background:var(--bg3)}
 .agrid{display:grid;grid-template-columns:1fr 1.4fr;gap:6vw;align-items:center}
@@ -195,24 +195,29 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 .fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
 .ftop{font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color var(--tr)}
 .ftop:hover{color:var(--accent)}
-/* MODAL */
-.modal{position:fixed;inset:0;z-index:8000;display:flex;align-items:center;justify-content:center;padding:1.2rem;opacity:0;pointer-events:none;transition:opacity .35s}
-.modal.open{opacity:1;pointer-events:auto}
-.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(10px)}
-.modal-box{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:0;max-width:1100px;width:100%;max-height:92vh;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.4,0,.2,1)}
-.modal.open .modal-box{transform:none}
-.modal-img{width:100%;height:100%;object-fit:contain;object-position:center;min-height:520px;max-height:92vh;display:block;background:#0a0a0a}
-.modal-body{padding:2.5rem;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;max-height:92vh}
-.modal-tag{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
-.modal-title{font-size:1.8rem;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:1.5rem}
-.modal-story{font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:1.8rem}
-.modal-story strong{color:var(--ink);font-weight:600}
-.modal-tools{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
-.modal-tool{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--border2);border-radius:2rem;color:var(--muted)}
-.modal-close{position:absolute;top:1rem;right:1rem;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border2);color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr),color var(--tr)}
-.modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* CATEGORY CARDS */
+.category-grid{display:grid;gap:1.2rem;margin-top:3rem}
+.graphics-category-grid{grid-template-columns:repeat(3,1fr)}
+.video-category-grid{grid-template-columns:repeat(2,1fr)}
+.category-card{display:block;min-width:0}
+.category-cover{position:relative;aspect-ratio:4/3;border-radius:var(--rs);overflow:hidden;background:var(--bg2)}
+.category-cover-bg{position:absolute;inset:0;transition:transform .65s cubic-bezier(.4,0,.2,1),filter .65s ease}
+.category-card:hover .category-cover-bg{transform:scale(1.055);filter:brightness(.82)}
+.category-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,.9),rgba(0,0,0,.05) 70%);transition:background .35s ease}
+.category-card:hover .category-overlay{background:linear-gradient(to top,rgba(10,10,10,.94),rgba(176,40,26,.08) 75%)}
+.category-overlay span{font-family:var(--fm);font-size:.58rem;letter-spacing:.18em;color:var(--accent);margin-bottom:.55rem}
+.category-overlay strong{font-size:clamp(1.2rem,2.4vw,2rem);font-weight:900;text-transform:uppercase;line-height:1.05}
+.category-overlay b{font-family:var(--fm);font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-top:.8rem;font-weight:400;transition:color var(--tr),transform var(--tr)}
+.category-card:hover .category-overlay b{color:var(--ink);transform:translateX(4px)}
+.branding-cover{background:linear-gradient(135deg,#280906,#721b12 48%,#0a0a0a)}
+.carousel-cover{background:linear-gradient(135deg,#07151d,#17384a 48%,#090909)}
+.poster-cover{background:linear-gradient(135deg,#201508,#5b3415 48%,#090909)}
+.cinematic-cover{background:linear-gradient(135deg,#080d12,#1e2932 48%,#050505)}
+.reels-cover{background:linear-gradient(135deg,#1a0808,#4b1512 48%,#080808)}
+
 @media(max-width:680px){.modal-box{grid-template-columns:1fr}.modal-img{min-height:280px;max-height:340px}}
 @media(max-width:1024px){
+.graphics-category-grid{grid-template-columns:repeat(2,1fr)}
 .hero{grid-template-columns:1fr;padding-top:100px;gap:2.5rem}
 .h-right{order:-1}.pwrap{width:min(280px,80%);margin:0 auto}
 .s1{right:-4%}.s2{left:-4%}
@@ -220,17 +225,18 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 .agrid{grid-template-columns:1fr;gap:3rem}
 .apwrap{max-width:260px}
 .cin{grid-template-columns:1fr}
-.ggrid{grid-template-columns:repeat(2,1fr)}
+
 }
 @media(max-width:768px){
+.graphics-category-grid,.video-category-grid{grid-template-columns:1fr}.category-cover{aspect-ratio:16/9}
 .sec{padding:5.5rem 5vw}
 .nav-ul,.nav-cta{display:none}
 .hbg{display:flex}
 .htitle{font-size:clamp(2.3rem,9vw,3.5rem)}
 .pill{display:none}
 .rgrid{grid-template-columns:repeat(2,1fr)}
-.ggrid{grid-template-columns:1fr}
-.gtall{grid-row:span 1;aspect-ratio:16/9}
+
+
 .frow{grid-template-columns:1fr}
 .cbgtxt{display:none}
 .hero{min-height:auto;padding-bottom:3.5rem}
@@ -254,8 +260,8 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 <nav class="navbar" id="nav">
   <a class="nav-logo" href="#">NKC<span class="ac">.</span></a>
   <ul class="nav-ul">
-    <li><a href="#reel" class="nl">Work</a></li>
-    <li><a href="#graphics" class="nl">Design</a></li>
+    <li><a href="#reel" class="nl">Video</a></li>
+    <li><a href="#graphics" class="nl">Graphics</a></li>
     <li><a href="#about" class="nl">About</a></li>
     <li><a href="#contact" class="nl">Contact</a></li>
   </ul>
@@ -263,8 +269,8 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
   <button class="hbg" id="hbg" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob" id="mob">
-  <a href="#reel" class="ml">Work</a>
-  <a href="#graphics" class="ml">Design</a>
+  <a href="#reel" class="ml">Video</a>
+  <a href="#graphics" class="ml">Graphics</a>
   <a href="#about" class="ml">About</a>
   <a href="#contact" class="ml">Contact</a>
 </div>
@@ -282,9 +288,9 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
       <span class="ln it">that make people</span>
       <span class="ln">stop <span class="hi">scrolling</span><span class="ac">.</span></span>
     </h1>
-    <p class="hsub rv" style="--d:.4s">Video editor &amp; graphic designer crafting cinematic edits, bold identities, and scroll-stopping content for brands.</p>
+    <p class="hsub rv" style="--d:.4s">Video editor &amp; graphic designer crafting cinematic films, sharp reels, bold identities, and scroll-stopping visuals.</p>
     <div class="hctas rv" style="--d:.55s">
-      <a href="#reel" class="btn br">View My Work <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#reel" class="btn br">Explore My Work <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#contact" class="btn bo">Let's Talk</a>
     </div>
   </div>
@@ -300,55 +306,78 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
   <div class="srhint"><div class="srtrack"><div class="srthumb"></div></div><span>Scroll</span></div>
 </section>
 
-<!-- REEL -->
+<!-- VIDEO EDITING -->
 <section class="sec reel-sec" id="reel">
-  <div class="lbl rv">Selected Work</div>
+  <div class="lbl rv">Video Work</div>
   <div class="rhd">
-    <h2 class="st rv">Video Editing<br><em>Reel.</em></h2>
-    <p class="sd rv">From punchy 15-second social reels to full cinematic productions — I edit with rhythm, intention, and a story in mind.</p>
+    <h2 class="st rv">Video<br><em>Editing.</em></h2>
+    <p class="sd rv">Cinematic filmmaking and short-form reels — selected work, edited with rhythm, intention, and a story in mind.</p>
   </div>
-  <div class="vwrap rv">
-    <div class="vbox">
-      <div class="vph" id="vph">
-        <div class="vbg"></div>
-        <button class="plg" id="plg" aria-label="Play"><div class="rip"></div><svg width="26" height="26" viewBox="0 0 26 26" fill="white"><polygon points="5,2 24,13 5,24"/></svg></button>
-        <div class="vlbl"><span class="vdur">03:42</span><span class="vtag">2024 Showreel</span></div>
+
+  <div class="category-grid video-category-grid">
+    <a href="cinematic.html" class="category-card rv" style="--d:0s">
+      <div class="category-cover">
+        <div class="category-cover-bg cinematic-cover"></div>
+        <div class="category-overlay">
+          <span>01</span>
+          <strong>Cinematic Filmmaking</strong>
+          <b>View Work ↗</b>
+        </div>
       </div>
-      <iframe id="vfr" class="vifr hidden" src="" data-src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0" allow="autoplay;encrypted-media" allowfullscreen title="Showreel"></iframe>
-    </div>
-    <div class="vcaps">
-      <span class="vcap"><span class="vcd">◆</span>Cinematic edits</span>
-      <span class="vcap"><span class="vcd">◆</span>Social media reels</span>
-      <span class="vcap"><span class="vcd">◆</span>Brand &amp; ad films</span>
-      <span class="vcap"><span class="vcd">◆</span>Motion graphics</span>
-    </div>
-  </div>
-  <div class="rgrid">
-    <div class="rc rv" style="--d:0s"><div class="rt rt1"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Brand Film</span><p class="rtitle">Product Launch — 60s Cut</p></div></div></div>
-    <div class="rc rv" style="--d:.08s"><div class="rt rt2"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Social Media</span><p class="rtitle">Instagram Reels Pack</p></div></div></div>
-    <div class="rc rv" style="--d:.16s"><div class="rt rt3"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Cinematic</span><p class="rtitle">Wedding Highlight Film</p></div></div></div>
-    <div class="rc rv" style="--d:.24s"><div class="rt rt4"></div><div class="ro"><div class="rpsm"><svg width="13" height="13" viewBox="0 0 14 14" fill="white"><polygon points="2,1 13,7 2,13"/></svg></div><div><span class="rtag">Motion</span><p class="rtitle">Animated Explainer</p></div></div></div>
+    </a>
+
+    <a href="reels.html" class="category-card rv" style="--d:.1s">
+      <div class="category-cover">
+        <div class="category-cover-bg reels-cover"></div>
+        <div class="category-overlay">
+          <span>02</span>
+          <strong>30 Sec Reels</strong>
+          <b>View Work ↗</b>
+        </div>
+      </div>
+    </a>
   </div>
 </section>
 
-<!-- GRAPHICS -->
+<!-- GRAPHIC DESIGN -->
 <section class="sec gsec" id="graphics">
   <div class="lbl rv">Design Work</div>
-  <h2 class="st rv">Graphics &amp;<br><em>Visual Design.</em></h2>
-  <p class="sd rv">Logos, social kits, posters, and brand identities — built around clarity, impact, and lasting impression.</p>
-  <div class="catrow rv">
-    <button class="cbtn on" data-c="all">All</button>
-    <button class="cbtn" data-c="branding">Branding</button>
-    <button class="cbtn" data-c="social">Social</button>
-    <button class="cbtn" data-c="print">Print</button>
-  </div>
-  <div class="ggrid">
-    <div class="gc rv" data-c="branding" style="--d:0s"><div class="gi gi1"></div><div class="ghov"><p class="ghtitle">Brand Identity Kit</p><span class="ghcat">Logo · Typography · Colors</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Brand Identity</span><span class="gtp">Branding</span></div></div>
-    <div class="gc rv" data-c="social" style="--d:.07s"><div class="gi gi2"></div><div class="ghov"><p class="ghtitle">Social Media Pack</p><span class="ghcat">Instagram · Stories · Reels</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Social Kit</span><span class="gtp">Social</span></div></div>
-    <div class="gc gtall rv" data-c="print" style="--d:.14s"><img src="Instagram post - dhanji 1st.png" alt="Poster" class="gi" style="object-fit:cover;object-position:center"/><div class="ghov"><p class="ghtitle">Dhanji</p><span class="ghcat">Poster · Print Design</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Poster</span><span class="gtp">Print</span></div></div>
-    <div class="gc rv" data-c="branding" style="--d:.21s"><div class="gi gi4"></div><div class="ghov"><p class="ghtitle">Logo Design</p><span class="ghcat">Wordmark · Icon</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Logo System</span><span class="gtp">Branding</span></div></div>
-    <div class="gc rv" data-c="social" style="--d:.28s"><div class="gi gi5"></div><div class="ghov"><p class="ghtitle">YouTube Thumbnails</p><span class="ghcat">High CTR Design</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Thumbnails</span><span class="gtp">Social</span></div></div>
-    <div class="gc rv" data-c="branding" style="--d:.35s"><div class="gi gi6"></div><div class="ghov"><p class="ghtitle">Brand Guidelines</p><span class="ghcat">Full Style System</span><span class="garr">↗</span></div><div class="gfoot"><span class="gnm">Brand Manual</span><span class="gtp">Branding</span></div></div>
+  <h2 class="st rv">Graphic<br><em>Design.</em></h2>
+  <p class="sd rv">Branding, carousels, and posters — selected work built around clarity, impact, and visual identity.</p>
+
+  <div class="category-grid graphics-category-grid">
+    <a href="branding.html" class="category-card rv" style="--d:0s">
+      <div class="category-cover">
+        <div class="category-cover-bg branding-cover"></div>
+        <div class="category-overlay">
+          <span>01</span>
+          <strong>Branding</strong>
+          <b>View Work ↗</b>
+        </div>
+      </div>
+    </a>
+
+    <a href="carousels.html" class="category-card rv" style="--d:.1s">
+      <div class="category-cover">
+        <div class="category-cover-bg carousel-cover"></div>
+        <div class="category-overlay">
+          <span>02</span>
+          <strong>Carousels</strong>
+          <b>View Work ↗</b>
+        </div>
+      </div>
+    </a>
+
+    <a href="posters.html" class="category-card rv" style="--d:.2s">
+      <div class="category-cover">
+        <div class="category-cover-bg poster-cover"></div>
+        <div class="category-overlay">
+          <span>03</span>
+          <strong>Posters</strong>
+          <b>View Work ↗</b>
+        </div>
+      </div>
+    </a>
   </div>
 </section>
 
@@ -426,32 +455,6 @@ footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
   </div>
 </footer>
 
-<!-- DHANJI MODAL -->
-<div class="modal" id="dhanjiModal">
-  <div class="modal-bg" id="dhanjiModalBg"></div>
-  <div class="modal-box">
-    <button class="modal-close" id="dhanjiClose">✕</button>
-    <img src="Instagram post - dhanji 1st.png" alt="Dhanji Poster" class="modal-img"/>
-    <div class="modal-body">
-      <div>
-        <div class="modal-tag">Print · Poster Design</div>
-        <h2 class="modal-title">Dhanji —<br/>Limited Edition</h2>
-        <p class="modal-story">
-          <strong>Dhanji</strong> is a DHH (Desi Hip Hop) artist from <strong>Ahmedabad</strong> whose music hits hard — raw, street-level, and unapologetically bold. When I listened to his tracks, the sound painted a very specific visual in my head: gritty textures, burning orange tones, and a vintage poster feel that matched the ruggedness of his style.
-        </p>
-        <p class="modal-story">
-          I wanted the poster to <strong>sound like his music looks</strong> — so I leaned into distressed paper textures, a duotone red-orange treatment on his portrait, and a bold hand-crafted typeface for the name. The "RUAB" repeated watermark in the background adds depth and references his artistic identity. The <strong>Limited Edition stamp</strong> in the corner was a deliberate touch — treating the artist like a collector's item.
-        </p>
-        <div class="modal-tools">
-          <span class="modal-tool">Photoshop</span>
-          <span class="modal-tool">Figma</span>
-          <span class="modal-tool">Snapseed</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 window.addEventListener('load',()=>{
   document.getElementById('lf').style.width='100%';
@@ -478,13 +481,6 @@ document.getElementById('plg').addEventListener('click',()=>{
   const f=document.getElementById('vfr');f.src=f.dataset.src;
   document.getElementById('vph').classList.add('hidden');f.classList.remove('hidden');
 });
-document.querySelectorAll('.cbtn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.cbtn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
-    const c=btn.dataset.c;
-    document.querySelectorAll('.gc').forEach(card=>{const s=c==='all'||card.dataset.c===c;card.style.opacity=s?'1':'0.2';card.style.pointerEvents=s?'auto':'none';});
-  });
-});
 document.getElementById('cform').addEventListener('submit',async e=>{
   e.preventDefault();
   const btn=document.getElementById('sbtn'),txt=document.getElementById('btxt');
@@ -504,16 +500,6 @@ document.getElementById('cform').addEventListener('submit',async e=>{
 document.addEventListener('mousemove',e=>{
   const cx=innerWidth/2,cy=innerHeight/2,dx=(e.clientX-cx)/cx,dy=(e.clientY-cy)/cy;
   document.querySelectorAll('.pill').forEach((p,i)=>{const d=(i+1)*7;p.style.transform=`translate(${dx*d}px,${dy*d}px)`;});
-});
-// Dhanji Modal
-const dModal=document.getElementById('dhanjiModal');
-document.getElementById('dhanjiClose').addEventListener('click',()=>dModal.classList.remove('open'));
-document.getElementById('dhanjiModalBg').addEventListener('click',()=>dModal.classList.remove('open'));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')dModal.classList.remove('open');});
-document.querySelectorAll('.gc').forEach(card=>{
-  if(card.querySelector('img[src="Instagram post - dhanji 1st.png"]')){
-    card.addEventListener('click',()=>dModal.classList.add('open'));
-  }
 });
 </script>
 </body>
