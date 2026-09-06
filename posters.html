@@ -11,16 +11,27 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--fh);font-weight:300;line-height:1.65;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
+button{border:none;background:none;font-family:inherit;cursor:pointer}
 img{display:block;max-width:100%}
+
+/* CURSOR — same style as homepage */
+.cursor{position:fixed;width:7px;height:7px;background:var(--accent2);border-radius:50%;pointer-events:none;z-index:9998;margin:-3.5px 0 0 -3.5px;transition:transform .05s}
+.curf{position:fixed;width:34px;height:34px;border:1px solid rgba(176,40,26,.45);border-radius:50%;pointer-events:none;z-index:9997;margin:-17px 0 0 -17px;transition:border-color var(--tr),width .15s,height .15s,margin .15s,background .15s}
+.cursor.h{transform:scale(0)!important}
+.curf.h{width:50px;height:50px;margin:-25px 0 0 -25px;background:rgba(176,40,26,.07);border-color:var(--accent)}
+
 .navbar{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5vw;background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:.06em}.ac{color:var(--accent)}
+.nav-logo{font-size:1.3rem;font-weight:900;letter-spacing:.06em}
+.ac{color:var(--accent)}
 .nav-back{font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);transition:color var(--tr)}
 .nav-back:hover{color:var(--ink)}
+
 .sec{padding:10rem 5vw 7rem;min-height:100vh}
 .lbl{font-family:var(--fm);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem}
 .st{font-size:clamp(2.4rem,4.8vw,4rem);font-weight:900;line-height:1.05;text-transform:uppercase;margin-bottom:1.2rem}
 .st em{font-style:italic;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.22)}
 .sd{font-size:.93rem;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:3.5rem}
+
 .ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .card{border-radius:var(--rs);overflow:hidden;position:relative;background:var(--bg2);border:1px solid var(--border);transition:transform var(--tr),border-color var(--tr),box-shadow var(--tr);cursor:pointer}
 .card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 20px 45px rgba(0,0,0,.35)}
@@ -29,14 +40,50 @@ img{display:block;max-width:100%}
 .info{padding:1rem 1.1rem;background:var(--bg2)}
 .tag{font-family:var(--fm);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.3rem}
 .title{font-size:.82rem;font-weight:600}
+
+/* MODAL — same visual language as homepage */
+.modal{position:fixed;inset:0;z-index:8000;display:flex;align-items:center;justify-content:center;padding:1.2rem;opacity:0;pointer-events:none;transition:opacity .35s}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.92);backdrop-filter:blur(10px)}
+.modal-box{position:relative;z-index:1;display:grid;grid-template-columns:1.2fr 1fr;gap:0;max-width:1100px;width:100%;max-height:92vh;background:var(--bg2);border:1px solid var(--border2);border-radius:var(--r);overflow:hidden;transform:translateY(24px) scale(.97);transition:transform .35s cubic-bezier(.4,0,.2,1)}
+.modal.open .modal-box{transform:none}
+.modal-img{width:100%;height:100%;object-fit:contain;object-position:center;min-height:520px;max-height:92vh;display:block;background:#0a0a0a}
+.modal-body{padding:2.5rem;display:flex;flex-direction:column;justify-content:flex-start;overflow-y:auto;max-height:92vh}
+.modal-tag{font-family:var(--fm);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.modal-title{font-size:1.8rem;font-weight:900;text-transform:uppercase;line-height:1.1;margin-bottom:1.5rem}
+.modal-story{font-size:.88rem;color:var(--muted);line-height:1.85;margin-bottom:1.8rem}
+.modal-story strong{color:var(--ink);font-weight:600}
+.modal-tools{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:2rem}
+.modal-tool{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid var(--border2);border-radius:2rem;color:var(--muted)}
+.modal-close{position:absolute;top:1rem;right:1rem;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--border2);color:var(--muted);font-size:1rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background var(--tr),color var(--tr)}
+.modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
 .footer{background:#060606;border-top:1px solid var(--border);padding:1.6rem 5vw}
 .finr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.flogo{font-size:1.1rem;font-weight:900}.fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
+.flogo{font-size:1.1rem;font-weight:900}
+.fcopy{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;color:var(--muted2);text-transform:uppercase}
+
 @media(max-width:900px){.ggrid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.sec{padding:8rem 5vw 5rem}.ggrid{grid-template-columns:1fr}.navbar{padding:1.1rem 5vw}.st{font-size:2.5rem}}
+@media(max-width:680px){
+  .modal-box{grid-template-columns:1fr}
+  .modal-img{min-height:280px;max-height:340px}
+}
+@media(max-width:600px){
+  .sec{padding:8rem 5vw 5rem}
+  .ggrid{grid-template-columns:1fr}
+  .navbar{padding:1.1rem 5vw}
+  .st{font-size:2.5rem}
+  .nav-back{font-size:.6rem}
+}
+@media(max-width:768px){.cursor,.curf{display:none}}
 </style>
 </head>
+
 <body>
+
+<div class="cursor" id="cur"></div>
+<div class="curf" id="curf"></div>
+
 <nav class="navbar">
   <a class="nav-logo" href="index.html">NKC<span class="ac">.</span></a>
   <a class="nav-back" href="index.html#graphics">← Back to Graphic Design</a>
@@ -48,7 +95,7 @@ img{display:block;max-width:100%}
   <p class="sd">A selection of poster and print-focused visual work, built with bold typography, composition, and atmosphere.</p>
 
   <div class="ggrid">
-    <article class="card">
+    <article class="card" id="dhanjiCard">
       <img src="assets/posters/Instagram post - dhanji 1st.png" alt="Dhanji Poster"/>
       <div class="info">
         <span class="tag">Poster · Print Design</span>
@@ -65,6 +112,93 @@ img{display:block;max-width:100%}
     <a class="nav-back" href="index.html">Back to home ↑</a>
   </div>
 </footer>
+
+<!-- POSTER DETAILS MODAL -->
+<div class="modal" id="dhanjiModal" aria-hidden="true">
+  <div class="modal-bg" id="dhanjiModalBg"></div>
+
+  <div class="modal-box">
+    <button class="modal-close" id="dhanjiClose" aria-label="Close">✕</button>
+
+    <img src="assets/posters/Instagram post - dhanji 1st.png" alt="Dhanji Poster" class="modal-img"/>
+
+    <div class="modal-body">
+      <div class="modal-tag">Print · Poster Design</div>
+
+      <h2 class="modal-title">Dhanji —<br/>Limited Edition</h2>
+
+      <!-- EDIT THIS TEXT LATER FOR YOUR POSTER DESCRIPTION -->
+      <p class="modal-story">
+        <strong>Dhanji</strong> is a DHH (Desi Hip Hop) artist from <strong>Ahmedabad</strong> whose music hits hard — raw, street-level, and unapologetically bold. When I listened to his tracks, the sound painted a very specific visual in my head: gritty textures, burning orange tones, and a vintage poster feel that matched the ruggedness of his style.
+      </p>
+
+      <p class="modal-story">
+        I wanted the poster to <strong>sound like his music looks</strong> — so I leaned into distressed paper textures, a duotone red-orange treatment on his portrait, and a bold hand-crafted typeface for the name. The repeated “RUAB” watermark adds depth and references his artistic identity. The <strong>Limited Edition stamp</strong> gives the piece a collectible, physical-poster feel.
+      </p>
+
+      <div class="modal-tools">
+        <span class="modal-tool">Photoshop</span>
+        <span class="modal-tool">Figma</span>
+        <span class="modal-tool">Snapseed</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Cursor animation — copied from the homepage interaction */
+const cur=document.getElementById('cur');
+const curf=document.getElementById('curf');
+let mx=0,my=0,fx=0,fy=0;
+
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;
+  my=e.clientY;
+  cur.style.transform=`translate(${mx}px,${my}px)`;
+});
+
+(function tick(){
+  fx+=(mx-fx)*.12;
+  fy+=(my-fy)*.12;
+  curf.style.transform=`translate(${fx}px,${fy}px)`;
+  requestAnimationFrame(tick);
+})();
+
+document.querySelectorAll('a,button,.card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{
+    cur.classList.add('h');
+    curf.classList.add('h');
+  });
+  el.addEventListener('mouseleave',()=>{
+    cur.classList.remove('h');
+    curf.classList.remove('h');
+  });
+});
+
+/* Poster modal */
+const dModal=document.getElementById('dhanjiModal');
+const dCard=document.getElementById('dhanjiCard');
+
+function openModal(){
+  dModal.classList.add('open');
+  dModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  dModal.classList.remove('open');
+  dModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+
+dCard.addEventListener('click',openModal);
+document.getElementById('dhanjiClose').addEventListener('click',closeModal);
+document.getElementById('dhanjiModalBg').addEventListener('click',closeModal);
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape') closeModal();
+});
+</script>
+
 </body>
 </html>
-
